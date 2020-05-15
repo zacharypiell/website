@@ -1,0 +1,165 @@
+:root {
+    --primary: #ddd;
+    --dark: #2E2E2E;
+    --light: #EAEAEA;
+    --shadow: 0 1px 5px rgba(104,104,104,0.8);
+}
+
+body, html {
+    background-image: url(../images/black_background.png);
+    background-size: cover;
+    color: var(--light)
+}
+
+.about {
+    padding: 10px;
+    /* margin: px 10px; */
+    
+}
+
+.music_content p {
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.picture img {
+    width: 100%;
+    height: auto;
+    border: solid;
+    border-width: 2px;
+}
+
+.guitar {
+    grid-area: guitar;
+    padding: 30px;
+}
+.piano {
+    grid-area: piano;
+    padding: 30px;
+
+}
+
+.instruments { 
+    grid-area: instruments;
+    display: grid;
+    grid-template-areas: 'guitar piano';
+
+}
+
+.about { 
+    grid-area: about;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.about2 {
+    grid-area: about2;
+    text-align: center;
+}
+.songs { grid-area: song;}
+
+.music_content > div {
+  /* text-align: center; */
+  font-size: 20px;
+  padding: 10px;
+}
+.music_content {
+
+    margin: 5px;
+    display: grid;
+    grid-template-areas:
+    'instruments'
+    'about'
+    'song'
+    'about2'
+    'spotify';
+    grid-gap: 0px;
+    padding-top: 60px;
+}
+
+.song1{grid-area: song1; padding: 10px}
+.song2{grid-area: song2; padding: 10px}
+.song3{grid-area: song3; padding: 10px}
+.song4{grid-area: song4; padding: 10px}
+
+.songs {
+    display: grid;
+    grid-template-areas:
+    'song1 song2'
+    'song3 song4';
+}
+
+.iframe {
+    border: 2px solid white;
+}
+
+.spotify {
+    grid-area: spotify;
+    display: flex;
+    justify-content: center;
+    /* margin: 10% 10%; */
+}
+
+.spotify > div {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
+
+@media (max-width: 789px) {
+    /* .picture img {
+        width: 50%;
+        height: auto;
+    } */
+
+    .music_content > div {
+        /* text-align: center; */
+        font-size: 20px;
+        padding: 10px;
+    }
+    .instruments { 
+        grid-area: instruments;
+        display: grid;
+        grid-template-areas: 
+        'guitar' 
+        'piano';
+    }
+    .guitar {
+        padding: 15px;
+    }
+    .piano {
+        padding: 15px;
+    
+    }
+    .music_content {
+      
+          margin: 5px;
+          display: grid;
+          grid-template-areas:
+          'instruments'
+          'about'
+          'song'
+          'about2'
+          'spotify';
+          grid-gap: 0px;
+          padding-top: 60px;
+    }
+    .about {
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-top: 0;
+    }
+    .songs {
+        grid-template-areas:
+        'song1'
+        'song2'
+        'song3'
+        'song4';
+    }
+
+    
+  }

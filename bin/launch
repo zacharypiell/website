@@ -1,0 +1,19 @@
+#!/bin/bash
+# 
+# Personal Website
+#
+# Clean, build and start server
+#
+# Zachary Piell
+
+
+# Stop on errors, print commands
+# See https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
+set -Eeuo pipefail
+set -x
+
+# make sure in right directory
+cd ~/Desktop/grid-website
+
+# Serve
+python3 -m http.server 8000

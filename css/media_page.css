@@ -1,0 +1,148 @@
+:root {
+    --primary: #ddd;
+    --dark: #2E2E2E;
+    --light: #EAEAEA;
+    --shadow: 0 1px 5px rgba(104,104,104,0.8);
+}
+html, body {
+    overflow: hidden;
+}
+body {
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+
+}
+
+/* photos ###########################################################*/ 
+.about {
+    margin-top: 60px;
+}
+
+.about p {
+    color: black;
+    text-align: center;
+    padding-top: 15px;
+    font-size: 1.4rem;
+}
+
+.photos {
+    /* Prevent vertical gaps */
+    line-height: 1.4;
+
+    -webkit-column-count: 4;
+    -webkit-column-gap:   0px;
+    -moz-column-count:    4;
+    -moz-column-gap:      0px;
+    column-count:         4;
+    column-gap:           4px;  
+}
+
+.photos img {
+    /* Just in case there are inline attributes */
+    width: 100% !important;
+    height: auto !important;
+}
+
+@media (max-width: 1600px) {
+    .photos {
+    -moz-column-count:    3;
+    -webkit-column-count: 3;
+    column-count:         3;
+    }
+}
+@media (max-width: 1000px) {
+    .photos {
+    -moz-column-count:    2;
+    -webkit-column-count: 2;
+    column-count:         2;
+    }
+}
+@media (max-width: 800px) {
+    .photos {
+    -moz-column-count:    1;
+    -webkit-column-count: 1;
+    column-count:         1;
+    }
+}
+/* photoshop ###########################################################*/ 
+
+
+/* nothing really changes here, see above css */
+
+
+/* videos ###########################################################*/ 
+
+.video1 {grid-area: video1}
+.video2 {grid-area: video2}
+.video3 {grid-area: video3}
+.video4 {grid-area: video4}
+
+.videos {
+    display: grid;
+    text-align: center;
+    margin-bottom: 60px;
+    grid-template-areas:
+    'video1'
+    'video2'
+    'video3'
+    'video4';
+    
+}
+
+
+/* slider ###################################################################*/
+
+.slider {
+    padding-top: 60px;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+    display: flex;
+}
+
+#phone_photos {
+    width: 100%;
+}
+#photoshop {
+    width: 100%;
+}
+#videos {
+    width: 100%;
+}
+
+.slides {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+.slides::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+.slides::-webkit-scrollbar-thumb {
+    background: black;
+    border-radius: 10px;
+}
+.slides::-webkit-scrollbar-track {
+    background: transparent;
+}
+.slide > div {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    width: 300px;
+    height: 300px;
+    margin-right: 50px;
+    border-radius: 10px;
+    background: #eee;
+    transform-origin: center center;
+    transform: scale(1);
+    transition: transform 0.5s;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100px;
+}
