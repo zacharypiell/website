@@ -1,1 +1,1 @@
-# this is my first website! Welcome!
+# This is my first website! Welcome!
