@@ -144,6 +144,11 @@
                 link.itemID = i;
             }
             
+                // Attaching the event listener function to window's resize event
+            window.addEventListener("contentContainer", displayWindowSize);
+    
+            
+
             // set first item as active
             links[activeLink].classList.add("active");
             
@@ -162,20 +167,56 @@
                 }
             }
             
-            // Handle changing the slider position as well as ensure
-            // the correct link is highlighted as being active
+            // Defining event listener function
+            function displayWindowSize(){
+                // Get width and height of the window excluding scrollbars
+                var w = document.documentElement.clientWidth;
+                var h = document.documentElement.clientHeight;
+                
+                // Display result inside a div element
+                console.log(w);
+                return(w);
+            }
+            // window.setInterval(function(){                
+            //     var width = displayWindowSize();
+            //     setTimeout('', 5000);
+            //     var width2 = displayWindowSize();
+            //     if (width)
+                
+            // }, 5000);
+
             function changePosition(link) {
                 var position = link.getAttribute("data-pos");
                 console.log(position);
                 var translateValue = "translate3d(" + position + ", 0px, 0)";
                 console.log(translateValue);
-                if (translateValue == "translate3d(-33.33%, 0px, 0)"){
-                    console.log("change height to 1000px");
-                    contentContainer.style.height = '1000px';
+                var w = window.innerWidth;
+                console.log(w);
+                // Calling the function for the first time
+                displayWindowSize();
+                if (translateValue == "translate3d(-33.33%, 0px, 0)"){ // on the designs page
+                    if (w <= 800){
+                        contentContainer.style.height = '4500px';
+                    }
+                    if (w <= 1000){
+                        contentContainer.style.height = '1600px';
+                    }
+                    else {
+                        contentContainer.style.height = '1300px';
+
+                    }
                 }
-                else if(translateValue == "translate3d(-66.67%, 0px, 0)") {
-                    console.log("change height to 1000px");
-                    contentContainer.style.height = '1000px';
+                else if(translateValue == "translate3d(-66.67%, 0px, 0)") { // on the videos page
+                    if (w <= 800){
+                        contentContainer.style.height = '4500px';
+                    }
+                    if (w <= 1000){
+                        contentContainer.style.height = '1600px';
+                    }
+                    else {
+                        contentContainer.style.height = '1300px';
+
+                    }
                 }
                 else {
                     contentContainer.style.height = '100%';
