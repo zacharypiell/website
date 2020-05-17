@@ -131,7 +131,7 @@
             // just querying the DOM...like a boss!
             var links = document.querySelectorAll(".itemLinks");
             var wrapper = document.querySelector("#wrapper");
-            
+            var spot = 1;
             // the activeLink provides a pointer to the currently displayed item
             var activeLink = 0;
             
@@ -177,13 +177,34 @@
                 console.log(w);
                 return(w);
             }
-            // window.setInterval(function(){                
-            //     var width = displayWindowSize();
-            //     setTimeout('', 5000);
-            //     var width2 = displayWindowSize();
-            //     if (width)
-                
-            // }, 5000);
+            var f = function(event) {
+                var eventHandler = function(event){
+                    var screenElement = document.getElementById('contentContainer');
+                    console.log(screenElement);
+                    printing = "W=" + window.innerWidth + " H=" + window.innerHeight;
+                    console.log(printing);
+                    console.log(spot);
+                    if (spot == 2){ // designs page
+                        
+                        if (window.innerWidth >= 1000) contentContainer.style.height = '1000px';
+                        else if (window.innerWidth >= 800) contentContainer.style.height = '2000px';
+                        else if (window.innerWidth >= 600) contentContainer.style.height = '5500px';
+                        else if (window.innerWidth >= 400) contentContainer.style.height = '4000px';
+                        else if (window.innerWidth >= 200) contentContainer.style.height = '3000px';
+
+
+                    }
+                    else if (spot == 3){ // videos page
+                        if (window.innerWidth >= 1000) contentContainer.style.height = '1000px';
+                        else if (window.innerWidth >= 800) contentContainer.style.height = '5500px';
+                        else if (window.innerWidth >= 600) contentContainer.style.height = '3000px';
+                        else if (window.innerWidth >= 400) contentContainer.style.height = '2500px';
+                        // else if (window.innerWidth >= 200) contentContainer.style.height = '3000px';
+                    }
+                };
+                window.addEventListener('resize', eventHandler, false);
+            };
+            document.addEventListener('DOMContentLoaded', f, false);
 
             function changePosition(link) {
                 var position = link.getAttribute("data-pos");
@@ -195,32 +216,24 @@
                 // Calling the function for the first time
                 displayWindowSize();
                 if (translateValue == "translate3d(-33.33%, 0px, 0)"){ // on the designs page
-                    if (w <= 800){
-                        contentContainer.style.height = '8000px';
-                    }
-                    if (w <= 1000){
-                        contentContainer.style.height = '1600px';
-                    }
-                    else {
-                        contentContainer.style.height = '1300px';
-
-                    }
+                    if (window.innerWidth >= 1000) contentContainer.style.height = '1000px';
+                    else if (window.innerWidth >= 800) contentContainer.style.height = '2000px';
+                    else if (window.innerWidth >= 600) contentContainer.style.height = '5500px';
+                    else if (window.innerWidth >= 400) contentContainer.style.height = '4000px';
+                    else if (window.innerWidth >= 200) contentContainer.style.height = '3000px';
+                    spot = 2;
                 }
                 else if(translateValue == "translate3d(-66.67%, 0px, 0)") { // on the videos page
-                    if (w <= 800){
-                        contentContainer.style.height = '8000px';
-                    }
-                    if (w <= 1000){
-                        contentContainer.style.height = '1600px';
-                    }
-                    else {
-                        contentContainer.style.height = '1300px';
-
-                    }
+                    if (window.innerWidth >= 1000) contentContainer.style.height = '1000px';
+                    else if (window.innerWidth >= 800) contentContainer.style.height = '5500px';
+                    else if (window.innerWidth >= 600) contentContainer.style.height = '3000px';
+                    else if (window.innerWidth >= 400) contentContainer.style.height = '2500px';
+                    // else if (window.innerWidth >= 200) contentContainer.style.height = '3000px';
+                    spot = 3;
                 }
                 else {
                     contentContainer.style.height = '100%';
-
+                    spot = 1;
                 }
                 wrapper.style.transform = translateValue;
             

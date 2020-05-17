@@ -65,9 +65,11 @@ body, html {
     background-color: #CCCCCC;
     padding: 5px;
     border-radius: 10px;
-    border: black 1px solid;
+    border: #CCCCCC 1px solid;
+    transition: background-color .4s ease-out;
 }
 #navLinks ul li:hover {
+    transition: background-color .2s ease-out;
     background-color: #FFFF00;
 }
 #navLinks ul li.active {
