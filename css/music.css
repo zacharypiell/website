@@ -56,6 +56,12 @@ body, html {
 .about2 {
     grid-area: about2;
     text-align: center;
+    padding: 0;
+    margin: 0;
+}
+.about2 p{
+    /* padding: 0;
+    margin:  0; */
 }
 .songs { grid-area: song;}
 
