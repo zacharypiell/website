@@ -59,10 +59,7 @@ body, html {
     padding: 0;
     margin: 0;
 }
-.about2 p{
-    /* padding: 0;
-    margin:  0; */
-}
+
 .songs { grid-area: song;}
 
 .music_content > div {
