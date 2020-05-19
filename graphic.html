@@ -31,7 +31,7 @@
         <div id="navLinks">
             <ul>
                 <li class="itemLinks" data-pos="0px">Photos</li>
-                <li class="itemLinks" data-pos="-33.33%">Designs</li>
+                <li class="itemLinks" data-pos="-33.355%">Designs</li>
                 <li class="itemLinks" data-pos="-66.67%">Videos</li>
                 
             </ul>
@@ -88,6 +88,8 @@
                         <p style="padding-left: 5%; padding-right: 5%;">Here are some designs I have created using Adobe Photoshop.</p>
                     </div>
                     <section class="photos">
+                        <img src="images/memco.png">
+                        <img src="images/stay.png">
                         <img src="images/planeGanggg.jpg">
                         <img src="images/final_kendrick_bowl">
                         <img src="images/canada_goosebumps.jpg">
@@ -99,7 +101,7 @@
                 </div>
                 <div id="itemThree" class="content">
                     <div class="about">
-                        <p style="padding-left: 5%; padding-right: 5%;">Here are a few of my favorite videos I have taken. </p>
+                        <p style="padding-left: 5%; padding-right: 5%;">Here are a few of my favorite videos I have taken: </p>
                     </div>
                     <div class="videos">
                         <div class="video1">
@@ -184,7 +186,9 @@
                     console.log(spot);
                     if (spot == 2){ // designs page
                         
-                        if (window.innerWidth >= 1000) contentContainer.style.height = '1000px';
+                        if (window.innerWidth >= 1400) contentContainer.style.height = '2000px';
+                        else if (window.innerWidth >= 1200) contentContainer.style.height = '1400px';
+                        else if (window.innerWidth >= 1000) contentContainer.style.height = '1200px';
                         else if (window.innerWidth >= 800) contentContainer.style.height = '2000px';
                         else if (window.innerWidth >= 600) contentContainer.style.height = '5500px';
                         else if (window.innerWidth >= 400) contentContainer.style.height = '4000px';
@@ -193,11 +197,12 @@
 
                     }
                     else if (spot == 3){ // videos page
-                        if (window.innerWidth >= 1000) contentContainer.style.height = '1000px';
-                        else if (window.innerWidth >= 800) contentContainer.style.height = '5500px';
-                        else if (window.innerWidth >= 600) contentContainer.style.height = '3000px';
-                        else if (window.innerWidth >= 400) contentContainer.style.height = '2500px';
-                        // else if (window.innerWidth >= 200) contentContainer.style.height = '3000px';
+                        if (window.innerWidth >= 1500) contentContainer.style.height = '2000px';
+                        else if (window.innerWidth >= 930) contentContainer.style.height = '1000px';
+                        else if(window.innerWidth >= 700) contentContainer.style.height = '3000px';
+                        else if (window.innerWidth >= 500) contentContainer.style.height = '2000px';
+                        else if (window.innerWidth >= 400) contentContainer.style.height = '1300px';
+                        else contentContainer.style.height = '2000px';
                     }
                 };
                 window.addEventListener('resize', eventHandler, false);
@@ -213,8 +218,10 @@
                 console.log(w);
                 // Calling the function for the first time
                 displayWindowSize();
-                if (translateValue == "translate3d(-33.33%, 0px, 0)"){ // on the designs page
-                    if (window.innerWidth >= 1000) contentContainer.style.height = '1000px';
+                if (translateValue == "translate3d(-33.355%, 0px, 0)"){ // on the designs page
+                    if (window.innerWidth >= 1400) contentContainer.style.height = '2000px';
+                    else if (window.innerWidth >= 1200) contentContainer.style.height = '1400px';
+                    else if (window.innerWidth >= 1000) contentContainer.style.height = '1200px';
                     else if (window.innerWidth >= 800) contentContainer.style.height = '2000px';
                     else if (window.innerWidth >= 600) contentContainer.style.height = '5500px';
                     else if (window.innerWidth >= 400) contentContainer.style.height = '4000px';
