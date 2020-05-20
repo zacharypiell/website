@@ -133,12 +133,14 @@ body, html {
     background-color: rgba(255,255,255,0.8);
     border: 2px solid var(--dark);
     border-radius: 50%;
-    margin-top: 10%;
+    /* margin-top: 10%;
     margin-left: 10%;
-    margin-right: 10%;
+    margin-right: 10%; */
     transition: transform .2s; /* Animation */
 }
-
+.third-container > .skill {
+    height: 290px;
+}
 .third-container img:hover{
     transform: scale(1.1);
 }
@@ -152,7 +154,7 @@ body, html {
     background-color: rgba(255, 255, 255, 0.3);
     border-radius: 10px;
     padding: 10px;
-
+    height: 40px;
     /* position: relative;
     justify-self: center; */
 }
@@ -161,7 +163,6 @@ body, html {
     justify-items: center;
     align-items: center;
     width: 100%;
-    height: 290px;
     text-align: center;
     padding-top: 10%;
 }
@@ -172,7 +173,6 @@ body, html {
     justify-items: center;
     align-items: center;
     width: 100%;
-    height: 290px;
     text-align: center;
     padding-top: 10%;
 
@@ -182,7 +182,6 @@ body, html {
     justify-items: center;
     align-items: center;
     width: 100%;
-    height: 290px;
     text-align: center;
     padding-top: 10%;
 
@@ -192,7 +191,6 @@ body, html {
     justify-items: center;
     align-items: center;
     width: 100%;
-    height: 290px;
     text-align: center;
     padding-top: 10%;
 
@@ -202,7 +200,6 @@ body, html {
     justify-items: center;
     align-items: center;
     width: 100%;
-    height: 290px;
     text-align: center;
 }
 .linux {
@@ -210,7 +207,6 @@ body, html {
     justify-items: center;
     align-items: center;
     width: 100%;
-    height: 290px;
     text-align: center;
 }
 .adobe {
@@ -218,7 +214,6 @@ body, html {
     justify-items: center;
     align-items: center;
     width: 100%;
-    height: 290px;
     text-align: center;
 }
 .ableton {
@@ -226,7 +221,6 @@ body, html {
     justify-items: center;
     align-items: center;
     width: 100%;
-    height: 290px;
     text-align: center;
 }
 .text{
@@ -287,7 +281,13 @@ body, html {
         margin-left: 1%;
         text-align: center;
     }
-
+    .third-container > .showcase {
+        height: 30px;
+    }
+    .third-container > .skill {
+        height: 250px;
+        padding-top: 10%;
+    }
     /* third container */
     .third-container {
 
@@ -298,7 +298,7 @@ body, html {
         'sql linux'
         'adobe ableton';
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: 50px 1fr 1fr 1fr 1fr 100px;
+        grid-template-rows: 80px 1fr 1fr 1fr 1fr 130px;
           /* Full height */
         height: 98.6%;
         /* padding-bottom: -20px; */
@@ -320,7 +320,34 @@ body, html {
     .second-container img{
         height: 80%;
     }
+    
+}
+@media screen and (max-width: 480px) { /* for mobile */
+    .top-container {
+        background-image: url(../images/container1.png);
+        background-size: cover;
+        background-position: absolute;
+    }
+    .myself img {
+            margin-top: 6%;
+    }
+    .second-container {
+        /* background-color: #c2fffc; */
+        background-image: url(../images/container2.png);
+        background-repeat: repeat-y;
+        background-size: cover;
+        background-position: absolute;
+
+    }
+    .second-container img {
+        height: 60%;
+    }
     .third-container {
+        /* background-color: #c2fffc; */
+        background-image: url(../images/green_yellow.png);
+        background-repeat: repeat-y;
+        background-size: cover;
+        background-position: absolute;
         grid-template-areas:
         'skills'
         'cplusplus'
@@ -332,37 +359,25 @@ body, html {
         'adobe'
         'ableton';
         grid-template-columns: 1fr;
-        grid-template-rows: 50px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 80px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 60px;
           /* Full height */
-        height: 99.3%;
+        height: 98.3%;
         /* padding-bottom: -20px; */
     }
     .third-container img {
-        width: 40%;
+        width: 25%;
+        margin-top: 0%;
+         
     }
-}
-@media screen and (max-width: 480px) { /* for mobile */
-    .top-container {
-        background-image: url(../images/container1.png);
-        background-size: cover;
+    .third-container > .skill {
+        height: 130px;
+        padding-top: 0;
+        padding-left: 15%;
+        text-align: left;
+        display: flex;
     }
-    .myself img {
-            margin-top: 6%;
-    }
-    .second-container {
-        /* background-color: #c2fffc; */
-        background-image: url(../images/container2.png);
-        background-repeat: repeat-y;
-        background-size: cover;
-    }
-    .second-container img {
-        height: 60%;
-    }
-    .third-container {
-        /* background-color: #c2fffc; */
-        background-image: url(../images/green_yellow.png);
-        background-repeat: repeat-y;
-        background-size: cover;
-        background-position: bottom;
+    .text{
+        padding-left: 10%;
+        opacity: 1;
     }
 }
