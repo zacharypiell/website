@@ -111,7 +111,7 @@ body, html {
 
 
 
-@media (max-width: 789px) {
+@media screen and (max-width: 789px) {
     /* .picture img {
         width: 50%;
         height: auto;

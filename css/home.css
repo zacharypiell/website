@@ -341,8 +341,28 @@ body, html {
         width: 40%;
     }
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 480px) { /* for mobile */
+    .top-container {
+        background-image: url(../images/container1.png);
+        background-size: cover;
+    }
+    .myself img {
+            margin-top: 6%;
+    }
+    .second-container {
+        /* background-color: #c2fffc; */
+        background-image: url(../images/container2.png);
+        background-repeat: repeat-y;
+        background-size: cover;
+    }
     .second-container img {
         height: 60%;
+    }
+    .third-container {
+        /* background-color: #c2fffc; */
+        background-image: url(../images/green_yellow.png);
+        background-repeat: repeat-y;
+        background-size: cover;
+        background-position: bottom;
     }
 }
