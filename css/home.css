@@ -50,6 +50,10 @@ body, html {
     padding-left: 1%;
     justify-self: center;
 }
+.showcase p {
+    padding-left: 4%;
+    padding-right: 4%;
+}
 
 .showcase > .college {
     background-color: rgba(255, 255, 255, 0.3);
@@ -71,10 +75,6 @@ body, html {
     margin-right: 7%;
     margin-left: 7%;
     text-align: center;
-}
-.showcase > .home p{
-    padding-left: 4%;
-    padding-right: 4%;
 }
 
 .second-container {
@@ -314,7 +314,7 @@ body, html {
 
     /* top container */
     .myself img {
-        width: 70%;
+        width: 50%;
         margin-top: 10%;
     }
     .second-container img{
@@ -329,19 +329,20 @@ body, html {
         overflow-x: hidden;
     }
     .top-container {
-        background-image: url(../images/container1.png);
-        background-size: cover;
-        background-position: absolute;
+        /* background-image: url(../images/container1.png); */
+        /* background-size: cover;
+        background-position: absolute; */
     }
     .myself img {
-            margin-top: 6%;
+        margin-top: 6%;
+        width: 70%;
     }
     .second-container {
         /* background-color: #c2fffc; */
-        background-image: url(../images/container2.png);
-        background-repeat: repeat-y;
+        /* background-image: url(../images/container2.png); */
+        /* background-repeat: repeat-y;
         background-size: cover;
-        background-position: absolute;
+        background-position: absolute; */
 
     }
     .second-container img {
@@ -349,10 +350,10 @@ body, html {
     }
     .third-container {
         /* background-color: #c2fffc; */
-        background-image: url(../images/green_yellow.png);
-        background-repeat: repeat-y;
+        /* background-image: url(../images/green_yellow.png); */
+        /* background-repeat: repeat-y;
         background-size: cover;
-        background-position: absolute;
+        background-position: absolute; */
         grid-template-areas:
         'skills'
         'cplusplus'
