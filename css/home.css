@@ -118,18 +118,18 @@ body, html {
     'cplusplus python web java'
     'sql linux adobe ableton';
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 50px 1fr 1fr;
+    grid-template-rows: 80px 1fr 1fr;
     
     position: relative;
 
       /* Full height */
-    height: 90vh;
+    height: 85vh;
 
     background-attachment: fixed;
 }
 
 .third-container img {
-    width: 70%;
+    width: 60%;
     background-color: rgba(255,255,255,0.8);
     border: 2px solid var(--dark);
     border-radius: 50%;
@@ -148,13 +148,15 @@ body, html {
 .third-container > .showcase p{
     padding: 0;
     margin: 0;
+    font-size: 20px;
 }
 .third-container > .showcase {
     grid-area: skills;
     background-color: rgba(255, 255, 255, 0.3);
     border-radius: 10px;
     padding: 10px;
-    height: 40px;
+    margin-top: 1%;
+    height: 30px;
     /* position: relative;
     justify-self: center; */
 }
@@ -285,7 +287,7 @@ body, html {
         height: 30px;
     }
     .third-container > .skill {
-        height: 250px;
+        height: 230px;
         padding-top: 10%;
     }
     /* third container */
@@ -323,36 +325,16 @@ body, html {
     
 }
 @media screen and (max-width: 480px) { /* for mobile */
-    body, html {
-        /* background: var(--light); */
-        height: 100%;
-    }
-    .top-container {
-        /* background-image: url(../images/container1.png); */
-        /* background-size: cover;
-        background-position: absolute; */
-    }
+
     .myself img {
-        margin-top: 6%;
+        margin-top: 10%;
         width: 70%;
     }
-    .second-container {
-        /* background-color: #c2fffc; */
-        /* background-image: url(../images/container2.png); */
-        /* background-repeat: repeat-y;
-        background-size: cover;
-        background-position: absolute; */
 
-    }
     .second-container img {
-        height: 60%;
+        /* height: 60%; */
     }
     .third-container {
-        /* background-color: #c2fffc; */
-        /* background-image: url(../images/green_yellow.png); */
-        /* background-repeat: repeat-y;
-        background-size: cover;
-        background-position: absolute; */
         grid-template-areas:
         'skills'
         'cplusplus'
@@ -366,19 +348,19 @@ body, html {
         grid-template-columns: 1fr;
         grid-template-rows: 80px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 60px;
           /* Full height */
-        height: 98.3%;
-        /* padding-bottom: -20px; */
+        height: 98.35%;
     }
     .third-container img {
         width: 25%;
         margin-top: 0%;
-         
     }
     .third-container > .skill {
+        overflow-x: hidden;
         height: 130px;
+        width: auto;
         padding-top: 0;
-        padding-left: 15%;
-        text-align: left;
+        text-align: center;
+        padding-left: 20%;
         display: flex;
     }
     .text{
