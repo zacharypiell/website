@@ -326,7 +326,6 @@ body, html {
     body, html {
         /* background: var(--light); */
         height: 100%;
-        overflow-x: hidden;
     }
     .top-container {
         /* background-image: url(../images/container1.png); */
