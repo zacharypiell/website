@@ -19,7 +19,6 @@ body, html {
         'myself'
         'showcase';
     margin-top: 65px;
-    padding-top: 20px;
     padding-left: 5%;
     padding-right: 5%;
     color: var(--dark);
@@ -102,6 +101,9 @@ body, html {
     width: 100%;
     height: 100%;
 }
+.second-container > .smallscreen {
+    display: none;
+}
 
 .third-container {
     /* background-color: #c2fffc; */
@@ -154,7 +156,7 @@ body, html {
     grid-area: skills;
     background-color: rgba(255, 255, 255, 0.3);
     border-radius: 10px;
-    padding: 10px;
+    padding: 4%;
     margin-top: 1%;
     height: 30px;
     /* position: relative;
@@ -271,7 +273,9 @@ body, html {
         height: 90%;
         width: 200%;
         /* object-fit: contain;  */
-
+    }
+    .second-container > .smallscreen {
+        display: none;
     }
     .showcase > .home {
         background-color: rgba(255, 255, 255, 0.3);
@@ -285,6 +289,7 @@ body, html {
     }
     .third-container > .showcase {
         height: 30px;
+    
     }
     .third-container > .skill {
         height: 230px;
@@ -320,7 +325,14 @@ body, html {
         margin-top: 10%;
     }
     .second-container img{
-        height: 80%;
+        height: 40%;
+    }
+    .second-container > .bigscreen {
+        display: none;
+    }
+
+    .second-container > .smallscreen {
+        display: block;
     }
     
 }
@@ -332,7 +344,11 @@ body, html {
     }
 
     .second-container img {
+
         /* height: 60%; */
+    }
+    .second-container > .bigscreen {
+        display: none;
     }
     .third-container {
         grid-template-areas:
@@ -351,7 +367,7 @@ body, html {
         height: 98.35%;
     }
     .third-container img {
-        width: 25%;
+        width: 30%;
         margin-top: 0%;
     }
     .third-container > .skill {
@@ -360,7 +376,7 @@ body, html {
         width: auto;
         padding-top: 0;
         text-align: center;
-        padding-left: 20%;
+        padding-left: 15%;
         display: flex;
     }
     .text{
