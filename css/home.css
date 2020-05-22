@@ -323,6 +323,11 @@ body, html {
     
 }
 @media screen and (max-width: 480px) { /* for mobile */
+    body, html {
+        /* background: var(--light); */
+        height: 100%;
+        overflow-x: hidden;
+    }
     .top-container {
         background-image: url(../images/container1.png);
         background-size: cover;
