@@ -50,7 +50,8 @@ body, html {
     justify-content: center;
     justify-self: center;
     justify-items: center;
-    padding-bottom: 2%;
+    padding-bottom: 5%;
+    padding-top: 5%;
 }
 #navLinks ul {
     margin: 0px;
