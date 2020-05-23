@@ -166,3 +166,15 @@ body, html {
 
     
   }
+
+  @media screen and (max-width: 480px) {
+        .spotify {
+            display: block;
+        }
+        .spotify > div {
+            margin-top: 10px;
+            border: 1px white solid;
+        }
+
+
+  }
