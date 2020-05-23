@@ -50,8 +50,8 @@ body, html {
     justify-content: center;
     justify-self: center;
     justify-items: center;
-    padding-bottom: 5%;
-    padding-top: 5%;
+    padding-bottom: 2%;
+    padding-top: 2%;
 }
 #navLinks ul {
     margin: 0px;
@@ -209,5 +209,8 @@ iframe {
     .videos {
         grid-template-rows: 200px 200px 200px 200px;
     }
-
+    #contentContainer {
+        width: 97.5%;
+    
+    }
 }
