@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Zack's Website</title>
         <link rel="stylesheet" type="text/css" href="css/style.css">
-        <link rel="stylesheet" type="text/css" href="css/graphic.css">
+        <link rel="stylesheet" type="text/css" href="css/visuals.css">
         <script src="https://kit.fontawesome.com/571b416526.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400&family=Open+Sans&display=swap" rel="stylesheet">
         <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
@@ -24,7 +24,7 @@
             <ul class="menu">
                 <li><a href="experience.html">EXPERIENCE</a></li>
                 <li><a href="music.html">MUSIC</a></li>
-                <li><a href="graphic.html">VISUAL</a></li>
+                <li><a href="visuals.html">VISUALS</a></li>
             </ul>
         </header>
         <br>
@@ -35,52 +35,57 @@
                 <li class="itemLinks" data-pos="0px">Photos</li>
                 <li class="itemLinks" data-pos="-33.355%">Designs</li>
                 <li class="itemLinks" data-pos="-66.67%">Videos</li>
-                
             </ul>
         </div>
         <div id="contentContainer">
+            
+            <!-- The Modal -->
+            <!-- <div id="myModal" class="modal">
+                <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span> 
+                <img class="modal-content" id="img01">
+                <div id="caption"></div>
+            </div> -->
             <div id="wrapper">
-
                 <div id="itemOne" class="content">
                     <div class="about">
                         <p style="padding-left: 5%; padding-right: 5%;">Here are some photos I have taken, and particularly liked, over the years: </p>
                     </div>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
                     <section class="photos">
-                        <img src="images/sunset.jpg">
-                        <img src="images/jump.PNG">
-                        <img src="images/operahouse.JPG">
-                        <img src="images/mississippi.jpg">
-                        <img src="images/octopus.JPG">
-                        <img src="images/hotel.jpg">
-                        <img src="images/fire.JPG">
-                        <img src="images/cabo_landscape.jpg">                
-                        <img src="images/croatia.JPG">
-                        <img src="images/graffiti.jpg">
-                        <img src="images/trees.JPG">
-                        <img src="images/nice_restaurant.jpg">
-                        <img src="images/sail.jpg">                
-                        <img src="images/sleepysasha.JPG">
-                        <img src="images/tellur.jpg">
-                        <img src="images/cliff.JPG">
-                        <img src="images/chandelier.jpg">
-                        <img src="images/pinnacle.jpg">
-                        <img src="images/crested-2.jpg">
-                        <img src="images/apostles.JPG">
-                        <img src="images/soldierfield.JPG">
-                        <img src="images/umbrellas.jpg">
-                        <img src="images/gilson.jpg">
-                        <img src="images/nationalmall.jpg">
-                        <img src="images/AOPI.jpg">
-                        <img src="images/ranch.jpg">
-                        <img src="images/plane.jpg">
-                        <img src="images/sasha.jpg">
-                        <img src="images/golden.jpg">
-                        <img src="images/skiing.jpg">
-                        <img src="images/arb.JPG">
-                        <img src="images/crabtree_sunset.jpg">
-                        <img src="images/boston.jpg">
-                        <img src="images/christmas.jpg">
-                        <!-- <img src="images/club.jpg"> -->
+                        <img src="images/sunset.jpg" class="sunset myImg" alt="Sunset in Northbrook, IL">
+                        <img src="images/jump.PNG" class="jumping myImg" alt="Kangaroo Island Dunes, Australia">
+                        <img src="images/operahouse.JPG" class="operahouse myImg" alt="Sydney, Australia">
+                        <img src="images/mississippi.jpg" class="mississippi myImg" alt="A view of the sunset on the Mississippi River">
+                        <img src="images/octopus.JPG" class="octopus myImg" alt="I liked this octopus graffiti, can't remember where...">
+                        <img src="images/hotel.jpg" class="hotel myImg" alt="A hotel in Dubrovnik, Croatia">
+                        <img src="images/fire.JPG" class="fire myImg" alt="Somewhere up north at a campfire">
+                        <img src="images/cabo_landscape.jpg" class="cabo_landscape myImg" alt="Cabo San Lucas, Mexico">                
+                        <img src="images/croatia.JPG" class="croatia myImg" alt="Hvar, Croatia">
+                        <img src="images/graffiti.jpg" class="graffiti myImg" alt="Street Art in Melbourne, Australia">
+                        <img src="images/trees.JPG" class="trees myImg" alt="In a forest, somewhere">
+                        <img src="images/nice_restaurant.jpg" class="nice_restaurant myImg" alt="Greenwood, a restaurant in Highwood, IL">
+                        <img src="images/sail.jpg" class="sail myImg" alt="Cabo San Lucas, Mexico">                
+                        <img src="images/sleepysasha.JPG" class="sleepysasha myImg" alt="This is a picture of my sleepy old dog Sasha">
+                        <img src="images/tellur.jpg" class="tellur myImg" alt="Downtown Telluride, CO">
+                        <img src="images/cliff.JPG" class="cliff myImg" alt="The Blue Mountains, Australia">
+                        <img src="images/chandelier.jpg" class="chandelier myImg" alt="Chicago Cultural Center Ballroom">
+                        <img src="images/pinnacle.jpg" class="pinnacle myImg" alt="Pinnacle Peak, Scottsdale, AZ">
+                        <img src="images/crested-2.jpg" class="crested-2 myImg" alt="A view of Crested Butte Mountain in Colorado">
+                        <img src="images/apostles.JPG" class="apostles myImg" alt="Twelve Apostles, Australia">
+                        <img src="images/soldierfield.JPG" class="soldierfield myImg" alt="Soldier Field, Chicago">
+                        <img src="images/umbrellas.jpg" class="umbrellas myImg" alt="San Juan, Puerto Rico">
+                        <img src="images/gilson.jpg" class="gilson myImg" alt="Beautiful skies at Gilson Beach, Evanston, IL">
+                        <img src="images/nationalmall.jpg" class="nationalmall myImg" alt="Washington D.C.">
+                        <img src="images/AOPI.jpg" class="AOPI myImg" alt="Autumn leaves in Ann Arbor">
+                        <img src="images/ranch.jpg" class="ranch myImg" alt="Telluride, Colorado">
+                        <img src="images/plane.jpg" class="plane myImg" alt="Chicago Skyline from above">
+                        <img src="images/sasha.jpg" class="sasha myImg" alt="Here is a picture of my dog being less sleepy">
+                        <img src="images/golden.jpg" class="golden myImg" alt="Golden Hour in Colorado">
+                        <img src="images/skiing.jpg" class="skiing myImg" alt="Skiing in Crested Butte, Colorado">
+                        <img src="images/arb.JPG" class="arb myImg" alt="Views from the Ann Arbor Arboretum">
+                        <img src="images/crabtree_sunset.jpg" class="crabtree_sunset myImg" alt="A sunset on the roof">
+                        <img src="images/boston.jpg" class="boston myImg" alt="Views on the ocean in Marblehead, MA">
+                        <img src="images/christmas.jpg" class="christmas myImg" alt="Christmas in Melbourne, Australia">
                     </section>
                 </div>
                 <div id="itemTwo" class="content">
@@ -94,7 +99,6 @@
                         <img src="images/final_kendrick_bowl">
                         <img src="images/canada_goosebumps.jpg">
                         <img src="images/thePoet.png">
-                        
                         <img src="images/desertwater.jpg">
                         <img src="images/whip.png">
                         <img src="images/soundcloud_pro_pic.png">
@@ -245,29 +249,47 @@
             
                 link.classList.add("active");
             }
+
+            /*
             // click on images
             // Get the modal
-            // var modal = document.getElementById("photos");
+            var modal = document.getElementById("myModal");
 
-            // // Get the image and insert it inside the modal - use its "alt" text as a caption
-            // var img = document.getElementById("myImg");
-            // var modalImg = document.getElementById("img01");
-            // var captionText = document.getElementById("caption");
-            // img.onclick = function(){
-            // modal.style.display = "block";
-            // modalImg.src = this.src;
-            // captionText.innerHTML = this.alt;
-            // }
+            // Get the image and insert it inside the modal - use its "alt" text as a caption
+            var img = $('.myImg');
+            console.log(img);
 
-            // // Get the <span> element that closes the modal
-            // var span = document.getElementsByClassName("close")[0];
+            var modalImg = $("#img01");
 
-            // // When the user clicks on <span> (x), close the modal
-            // span.onclick = function() { 
-            // modal.style.display = "none";
-            // }
+            console.log(modalImg);
+            var captionText = document.getElementById("caption");
+            console.log(captionText);
 
+            // Get the image and insert it inside the modal - use its "alt" text as a caption
+            $('.myImg').click(function(){
+                modal.style.display = "block";
+                var newSrc = this.src;
+                modalImg.attr('src', newSrc);
+                captionText.innerHTML = this.alt;
+                var inner_element = document.getElementsByClassName("modal-content");
+                
+                
+                console.log(modalImg.height());
+                console.log(modalImg.width());
+                if (modalImg.height() > modalImg.width()){
 
+                }
+            });
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+ 
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() { 
+                modal.style.display = "none";
+            }
+
+            */
 
         </script>
     </body>
