@@ -12,6 +12,12 @@
         <script src="https://kit.fontawesome.com/571b416526.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400&family=Open+Sans&display=swap" rel="stylesheet">
         <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'UA-170086524-1');
+        </script>
     </head>
 
     <body>
@@ -38,10 +44,10 @@
             </ul>
         </div>
         <div id="contentContainer">
-            
+
             <!-- The Modal -->
             <!-- <div id="myModal" class="modal">
-                <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span> 
+                <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
                 <img class="modal-content" id="img01">
                 <div id="caption"></div>
             </div> -->
@@ -59,12 +65,12 @@
                         <img src="images/octopus.JPG" class="octopus myImg" alt="I liked this octopus graffiti, can't remember where...">
                         <img src="images/hotel.jpg" class="hotel myImg" alt="A hotel in Dubrovnik, Croatia">
                         <img src="images/fire.JPG" class="fire myImg" alt="Somewhere up north at a campfire">
-                        <img src="images/cabo_landscape.jpg" class="cabo_landscape myImg" alt="Cabo San Lucas, Mexico">                
+                        <img src="images/cabo_landscape.jpg" class="cabo_landscape myImg" alt="Cabo San Lucas, Mexico">
                         <img src="images/croatia.JPG" class="croatia myImg" alt="Hvar, Croatia">
                         <img src="images/graffiti.jpg" class="graffiti myImg" alt="Street Art in Melbourne, Australia">
                         <img src="images/trees.JPG" class="trees myImg" alt="In a forest, somewhere">
                         <img src="images/nice_restaurant.jpg" class="nice_restaurant myImg" alt="Greenwood, a restaurant in Highwood, IL">
-                        <img src="images/sail.jpg" class="sail myImg" alt="Cabo San Lucas, Mexico">                
+                        <img src="images/sail.jpg" class="sail myImg" alt="Cabo San Lucas, Mexico">
                         <img src="images/sleepysasha.JPG" class="sleepysasha myImg" alt="This is a picture of my sleepy old dog Sasha">
                         <img src="images/tellur.jpg" class="tellur myImg" alt="Downtown Telluride, CO">
                         <img src="images/cliff.JPG" class="cliff myImg" alt="The Blue Mountains, Australia">
@@ -119,7 +125,7 @@
                     <div class="videos">
                         <div class="video1">
                             <!-- sydney opera house -->
-                            <iframe class="video1" width="50%" height="50%" src="https://www.youtube.com/embed/MKLb36SiI34?start=5" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                 
+                            <iframe class="video1" width="50%" height="50%" src="https://www.youtube.com/embed/MKLb36SiI34?start=5" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
                         <div class="video2">
                             <!-- dubai water show -->
@@ -127,7 +133,7 @@
                         </div>
                         <div class="video3">
                             <!-- chance ultralight beam -->
-                            <iframe class="video3" width="50%" height="50%" src="https://www.youtube.com/embed/Usp4kAVxw3A?" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>          
+                            <iframe class="video3" width="50%" height="50%" src="https://www.youtube.com/embed/Usp4kAVxw3A?" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
                         <div class="video4">
                             <!-- construction video -->
@@ -147,45 +153,45 @@
             var spot = 1;
             // the activeLink provides a pointer to the currently displayed item
             var activeLink = 0;
-            
+
             // setup the event listeners
             for (var i = 0; i < links.length; i++) {
                 var link = links[i];
                 link.addEventListener('click', setClickedItem, false);
-            
+
                 // identify the item for the activeLink
                 link.itemID = i;
             }
-            
+
                 // Attaching the event listener function to window's resize event
             window.addEventListener("contentContainer", displayWindowSize);
-    
-            
+
+
 
             // set first item as active
             links[activeLink].classList.add("active");
-            
+
             function setClickedItem(e) {
                 removeActiveLinks();
-            
+
                 var clickedLink = e.target;
                 activeLink = clickedLink.itemID;
-            
+
                 changePosition(clickedLink);
             }
-            
+
             function removeActiveLinks() {
                 for (var i = 0; i < links.length; i++) {
                     links[i].classList.remove("active");
                 }
             }
-            
+
             // Defining event listener function
             function displayWindowSize(){
                 // Get width and height of the window excluding scrollbars
                 var w = document.documentElement.clientWidth;
                 var h = document.documentElement.clientHeight;
-                
+
                 // Display result inside a div element
                 console.log(w);
                 return(w);
@@ -198,7 +204,7 @@
                     console.log(printing);
                     console.log(spot);
                     if (spot == 2){ // designs page
-                        
+
                         if (window.innerWidth >= 1400) contentContainer.style.height = '2000px';
                         else if (window.innerWidth >= 1200) contentContainer.style.height = '1800px';
                         else if (window.innerWidth >= 1000) contentContainer.style.height = '1600px';
@@ -254,7 +260,7 @@
                     spot = 1;
                 }
                 wrapper.style.transform = translateValue;
-            
+
                 link.classList.add("active");
             }
 
@@ -280,8 +286,8 @@
                 modalImg.attr('src', newSrc);
                 captionText.innerHTML = this.alt;
                 var inner_element = document.getElementsByClassName("modal-content");
-                
-                
+
+
                 console.log(modalImg.height());
                 console.log(modalImg.width());
                 if (modalImg.height() > modalImg.width()){
@@ -291,9 +297,9 @@
 
             // Get the <span> element that closes the modal
             var span = document.getElementsByClassName("close")[0];
- 
+
             // When the user clicks on <span> (x), close the modal
-            span.onclick = function() { 
+            span.onclick = function() {
                 modal.style.display = "none";
             }
 
@@ -301,4 +307,4 @@
 
         </script>
     </body>
-</html> 
+</html>
