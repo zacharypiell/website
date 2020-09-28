@@ -238,7 +238,32 @@ body, html {
     opacity: 1;
 }
 
+@media screen and (max-width: 2000px) {
+    .top-container {
+        height: 93vh;
+    }
+    .third-container {
+        height: 97.6%;
+    }
+    .third-container > .skill {
+        height: 325px;
+        padding-top: 10%;
+    }
+    .myself img {
+        width: 25%;
+        margin-top: 5%;
+    }
+}
 
+@media screen and (max-width: 1600px) {
+    .third-container {
+        height: 97.6%;
+    }
+    .myself img {
+        width: 30%;
+        margin-top: 6%;
+    }
+}
 
 
 @media screen and (max-width: 900px) {
@@ -252,7 +277,7 @@ body, html {
         width: 50%;
         border: 5px solid var(--dark);
         border-radius: 50%;
-        margin-top: 4%;
+        margin-top: 10%;
     }
     .showcase > .college {
         background-color: rgba(255, 255, 255, 0.3);
@@ -324,8 +349,8 @@ body, html {
 
     /* top container */
     .myself img {
-        width: 50%;
-        margin-top: 10%;
+        width: 60%;
+        margin-top: 15%;
     }
     .second-container img{
         height: 70%;
@@ -337,6 +362,7 @@ body, html {
     
 }
 @media screen and (max-width: 480px) { /* for mobile */
+
     .second-container > .bigscreen {
         display: none;
     }
