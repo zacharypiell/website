@@ -38,113 +38,58 @@
         <br>
         <div id="navLinks">
             <ul>
-                <li class="itemLinks" data-pos="0px">Photos</li>
-                <li class="itemLinks" data-pos="-33.355%">Designs</li>
-                <li class="itemLinks" data-pos="-66.67%">Videos</li>
+                <li class="itemLinks photo_link">Photos</li>
+                <li class="itemLinks design_link">Designs</li>
+                <li class="itemLinks video_link">Videos</li>
             </ul>
         </div>
+
         <div id="contentContainer">
-
-            <!-- The Modal -->
-            <!-- <div id="myModal" class="modal">
-                <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
-                <img class="modal-content" id="img01">
-                <div id="caption"></div>
-            </div> -->
-            <div id="wrapper">
                 <div id="itemOne" class="content">
-                    <div class="about">
-                        <p style="padding-left: 5%; padding-right: 5%;">Here are some photos I have taken, and particularly liked, over the years: </p>
+                    <div id="about">
+                        <p>Here are some photos I have taken, and particularly liked, over the years: </p>
                     </div>
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-                    <section class="photos">
-                        <img src="images/pinnacle.jpg" class="pinnacle myImg" alt="Pinnacle Peak, Scottsdale, AZ" loading="lazy">
-                        <img src="images/sunset.jpg" class="sunset myImg" alt="Sunset in Northbrook, IL">
-                        <img src="images/croatia.JPG" class="croatia myImg" alt="Hvar, Croatia">
-                        <img src="images/jump.PNG" class="jumping myImg" alt="Kangaroo Island Dunes, Australia">
-                        <img src="images/nighttime_gallup_park.png" class="nighttime myImg" alt="Late Sunset over Gallup Park, Ann Arbor, MI">
-                        <img src="images/operahouse.JPG" class="operahouse myImg" alt="Sydney, Australia">
-                        <img src="images/mississippi.jpg" class="mississippi myImg" alt="A view of the sunset on the Mississippi River">
-                        <img src="images/octopus.JPG" class="octopus myImg" alt="I liked this octopus graffiti, can't remember where...">
-                        <img src="images/hotel.jpg" class="hotel myImg" alt="A hotel in Dubrovnik, Croatia">
-                        <img src="images/harrisville_sunset.png" class="harrisvill myImg" alt="Pink skies in Harrisville, MI">
-                        <img src="images/fire.JPG" class="fire myImg" alt="Somewhere up north at a campfire">
-                        <img src="images/cabo_landscape.jpg" class="cabo_landscape myImg" alt="Cabo San Lucas, Mexico">
-                        <img src="images/graffiti.jpg" class="graffiti myImg" alt="Street Art in Melbourne, Australia">
-                        <img src="images/trees.JPG" class="trees myImg" alt="In a forest, somewhere">
-                        <img src="images/nice_restaurant.jpg" class="nice_restaurant myImg" alt="Greenwood, a restaurant in Highwood, IL">
-                        <img src="images/sail.jpg" class="sail myImg" alt="Cabo San Lucas, Mexico">
-                        <img src="images/sleepysasha.JPG" class="sleepysasha myImg" alt="This is a picture of my sleepy old dog Sasha">
-                        <img src="images/tellur.jpg" class="tellur myImg" alt="Downtown Telluride, CO">
-                        <img src="images/cliff.JPG" class="cliff myImg" alt="The Blue Mountains, Australia">
-                        <img src="images/crested-2.jpg" class="crested-2 myImg" alt="A view of Crested Butte Mountain in Colorado">
-                        <img src="images/apostles.JPG" class="apostles myImg" alt="Twelve Apostles, Australia">
-                        <img src="images/chandelier.jpg" class="chandelier myImg" alt="Chicago Cultural Center Ballroom">
-                        <img src="images/soldierfield.JPG" class="soldierfield myImg" alt="Soldier Field, Chicago">
-                        <img src="images/umbrellas.jpg" class="umbrellas myImg" alt="San Juan, Puerto Rico">
-                        <!-- <img src="images/gilson.jpg" class="gilson myImg" alt="Beautiful skies at Gilson Beach, Evanston, IL"> -->
-                        <img src="images/nationalmall.jpg" class="nationalmall myImg" alt="Washington D.C.">
-                        <img src="images/landmark_sky.png" class="landy myImg" alt="Landmark perspective">
-                        <img src="images/AOPI.jpg" class="AOPI myImg" alt="Autumn leaves in Ann Arbor">
-                        <img src="images/ranch.jpg" class="ranch myImg" alt="Telluride, Colorado">
-                        <img src="images/plane.jpg" class="plane myImg" alt="Chicago Skyline from above">
-                        <img src="images/sasha.jpg" class="sasha myImg" alt="Here is a picture of my dog being less sleepy">
-                        <img src="images/golden.jpg" class="golden myImg" alt="Golden Hour in Colorado">
-                        <img src="images/red_tree.png" class="red myImg" alt="Red Tree in AA">
-                        <img src="images/arb_thru_trees.png" class="arb_thru_trees myImg" alt="Walking down the trail in the arb">
-                        <img src="images/diag_sunset.png" class="diag myImg" alt="A sunset in the diag">
-                        <img src="images/skiing.jpg" class="skiing myImg" alt="Skiing in Crested Butte, Colorado">
-                        <img src="images/arb.JPG" class="arb myImg" alt="Views from the Ann Arbor Arboretum">
-                        <img src="images/crabtree_sunset.jpg" class="crabtree_sunset myImg" alt="A sunset on the roof">
-                        <img src="images/boston.jpg" class="boston myImg" alt="Views on the ocean in Marblehead, MA">
-                        <img src="images/christmas.jpg" class="christmas myImg" alt="Christmas in Melbourne, Australia">
+                    <section id="photos">
+                        <img src="images/pinnacle.jpg" alt="Pinnacle Peak, Scottsdale, AZ">
+                        <img src="images/sunset.jpg" alt="Sunset in Northbrook, IL">
+                        <img src="images/croatia.JPG" alt="Hvar, Croatia">
+                        <img src="images/jump.PNG" alt="Kangaroo Island Dunes, Australia">
+                        <img src="images/nighttime_gallup_park.png" alt="Late Sunset over Gallup Park, Ann Arbor, MI">
+                        <img src="images/operahouse.JPG" alt="Sydney, Australia">
+                        <img src="images/mississippi.jpg" alt="A view of the sunset on the Mississippi River">
+                        <img src="images/octopus.JPG" alt="I liked this octopus graffiti, can't remember where...">
+                        <img src="images/hotel.jpg" alt="A hotel in Dubrovnik, Croatia">
+                        <img src="images/harrisville_sunset.png" alt="Pink skies in Harrisville, MI">
+                        <img src="images/fire.JPG" alt="Somewhere up north at a campfire">
+                        <img src="images/cabo_landscape.jpg" alt="Cabo San Lucas, Mexico">
+                        <img src="images/graffiti.jpg" alt="Street Art in Melbourne, Australia">
+                        <img src="images/trees.JPG" alt="In a forest, somewhere">
+                        <img src="images/nice_restaurant.jpg" alt="Greenwood, a restaurant in Highwood, IL">
+                        <img src="images/sail.jpg" alt="Cabo San Lucas, Mexico">
+                        <img src="images/sleepysasha.JPG" alt="This is a picture of my sleepy old dog Sasha">
+                        <img src="images/tellur.jpg" alt="Downtown Telluride, CO">
+                        <img src="images/cliff.JPG" alt="The Blue Mountains, Australia">
+                        <img src="images/crested-2.jpg" alt="A view of Crested Butte Mountain in Colorado">
+                        <img src="images/apostles.JPG" alt="Twelve Apostles, Australia">
+                        <img src="images/chandelier.jpg" alt="Chicago Cultural Center Ballroom">
+                        <img src="images/soldierfield.JPG" alt="Soldier Field, Chicago">
+                        <img src="images/umbrellas.jpg" alt="San Juan, Puerto Rico">
+                        <img src="images/nationalmall.jpg" alt="Washington D.C.">
+                        <img src="images/landmark_sky.png" alt="Landmark perspective">
+                        <img src="images/AOPI.jpg" alt="Autumn leaves in Ann Arbor">
+                        <img src="images/ranch.jpg" alt="Telluride, Colorado">
+                        <img src="images/plane.jpg" alt="Chicago Skyline from above">
+                        <img src="images/sasha.jpg" alt="Here is a picture of my dog being less sleepy">
+                        <img src="images/golden.jpg" alt="Golden Hour in Colorado">
+                        <img src="images/red_tree.png" alt="Red Tree in AA">
+                        <img src="images/arb_thru_trees.png" alt="Walking down the trail in the arb">
+                        <img src="images/diag_sunset.png" alt="A sunset in the diag">
+                        <img src="images/skiing.jpg" alt="Skiing in Crested Butte, Colorado">
+                        <img src="images/arb.JPG" alt="Views from the Ann Arbor Arboretum">
+                        <img src="images/crabtree_sunset.jpg" alt="A sunset on the roof">
+                        <img src="images/boston.jpg" alt="Views on the ocean in Marblehead, MA">
+                        <img src="images/christmas.jpg" alt="Christmas in Melbourne, Australia">
                     </section>
-                </div>
-                <div id="itemTwo" class="content">
-                    <div class="about">
-                        <p style="padding-left: 5%; padding-right: 5%;">Here are some designs I have created using Adobe Photoshop:</p>
-                    </div>
-                    <section class="photos">
-                        <img src="images/eclectic.png">
-                        <img src="images/eden_cover_art.png">
-                        <img src="images/memco.png">
-                        <img src="images/birds-in-trees.jpg">
-                        <img src="images/lo-fire.jpg">
-                        <img src="images/2012_DANCE_PARTY_no_text.png">
-                        <img src="images/stay.png">
-                        <img src="images/planeGanggg.png">
-                        <img src="images/desertwater.jpg">
-                        <img src="images/final_kendrick_bowl">
-                        <img src="images/lofi_mix_art.png">
-                        <img src="images/living-liberty.png">
-                        <img src="images/canada_goosebumps.jpg">
-                        <img src="images/whip.png">
-                        <img src="images/thePoet.png">
-
-                    </section>
-                </div>
-                <div id="itemThree" class="content">
-                    <div class="about">
-                        <p style="padding-left: 5%; padding-right: 5%;">Here are a few of my favorite videos I have taken:</p>
-                    </div>
-                    <div class="videos">
-                        <div class="video1">
-                            <!-- sydney opera house -->
-                            <iframe class="video1" width="50%" height="50%" src="https://www.youtube.com/embed/MKLb36SiI34?start=5" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </div>
-                        <div class="video2">
-                            <!-- dubai water show -->
-                            <iframe class="video2" width="50%" height="50%" src="https://www.youtube.com/embed/KZxHOllcIpo?start=5" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </div>
-                        <div class="video3">
-                            <!-- chance ultralight beam -->
-                            <iframe class="video3" width="50%" height="50%" src="https://www.youtube.com/embed/Usp4kAVxw3A?" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </div>
-                        <div class="video4">
-                            <!-- construction video -->
-                            <iframe class="video4" width="50%" height="50%" src="https://www.youtube.com/embed/OuaDIQIDM70?" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -152,165 +97,380 @@
             <p>Copyright &copy; 2020 Zachary Piell</p>
         </div>
         <script>
-            // just querying the DOM...like a boss!
-            var links = document.querySelectorAll(".itemLinks");
-            var wrapper = document.querySelector("#wrapper");
-            var spot = 1;
-            // the activeLink provides a pointer to the currently displayed item
-            var activeLink = 0;
-
-
-            // setup the event listeners
-            for (var i = 0; i < links.length; i++) {
-                var link = links[i];
-                link.addEventListener('click', setClickedItem, false);
-
-                // identify the item for the activeLink
-                link.itemID = i;
-            }
-
-                // Attaching the event listener function to window's resize event
-            window.addEventListener("contentContainer", displayWindowSize);
-
-
-
-            // set first item as active
-            links[activeLink].classList.add("active");
-
-            function setClickedItem(e) {
-                removeActiveLinks();
-
-                var clickedLink = e.target;
-                activeLink = clickedLink.itemID;
-
-                changePosition(clickedLink);
-            }
-
-            function removeActiveLinks() {
-                for (var i = 0; i < links.length; i++) {
-                    links[i].classList.remove("active");
+            document.getElementsByClassName("photo_link")[0].addEventListener("click", function() {
+                //remove old div
+                if (document.getElementsByClassName("content").length == 1) {
+                    document.getElementsByClassName("content")[0].remove();
                 }
-            }
 
-            // Defining event listener function
-            function displayWindowSize(){
-                // Get width and height of the window excluding scrollbars
-                var w = document.documentElement.clientWidth;
-                var h = document.documentElement.clientHeight;
+                var big_div = document.createElement('div');
+                big_div.id = 'itemOne';                
+                big_div.className = 'content';
 
-                // Display result inside a div element
-                console.log(w);
-                return(w);
-            }
-            var f = function(event) {
-                var eventHandler = function(event){
-                    var screenElement = document.getElementById('contentContainer');
-                    console.log(screenElement);
-                    printing = "W=" + window.innerWidth + " H=" + window.innerHeight;
-                    console.log(printing);
-                    console.log(spot);
-                    if (spot == 2){ // designs page
+                // handle the about div and append to big div
+                var about_div = document.createElement('div');
+                about_div.id = 'about';
+                var p_ele = document.createElement('p');
+                p_ele.innerHTML = "Here are some photos I have taken, and particularly liked, over the years: ";
+                about_div.appendChild(p_ele);
+                big_div.appendChild(about_div);
 
-                        if (window.innerWidth >= 1400) contentContainer.style.height = '2250px';
-                        // else if (window.innerWidth >= 1200) contentContainer.style.height = '2050px';
-                        else if (window.innerWidth >= 1000) contentContainer.style.height = '2250px';
-                        else if (window.innerWidth >= 800) contentContainer.style.height = '3700px';
-                        else if (window.innerWidth >= 600) contentContainer.style.height = '10600px';
-                        else if (window.innerWidth >= 400) contentContainer.style.height = '8000px';
-                        else if (window.innerWidth >= 200) contentContainer.style.height = '5800px';
+                // handle the section div called "photos"
+                var section_div = document.createElement('section');
+                section_div.id = 'photos';
 
+                var img1 = document.createElement("img");
+                img1.src = 'images/pinnacle.jpg';
+                img1.alt = 'Pinnacle Peak, Scottsdale, AZ';
+                // img1.width = '33%';
+                section_div.appendChild(img1);
 
-                    }
-                    else if (spot == 3){ // videos page
-                        if (window.innerWidth >= 1500) contentContainer.style.height = '2000px';
-                        else if (window.innerWidth >= 930) contentContainer.style.height = '1000px';
-                        else if(window.innerWidth >= 700) contentContainer.style.height = '3000px';
-                        else if (window.innerWidth >= 500) contentContainer.style.height = '2000px';
-                        else if (window.innerWidth >= 400) contentContainer.style.height = '1300px';
-                        else contentContainer.style.height = '1000px';
-                    }
-                };
-                window.addEventListener('resize', eventHandler, false);
-            };
-            document.addEventListener('DOMContentLoaded', f, false);
+                var img33 = document.createElement("img");
+                img33.src = 'images/red_tree.png';
+                img33.alt = 'Red Tree in AA';
+                section_div.appendChild(img33);
 
-            function changePosition(link) {
-                var position = link.getAttribute("data-pos");
-                console.log(position);
-                var translateValue = "translate3d(" + position + ", 0px, 0)";
-                console.log(translateValue);
-                var w = window.innerWidth;
-                console.log(w);
-                // Calling the function for the first time
-                displayWindowSize();
-                if (translateValue == "translate3d(-33.355%, 0px, 0)"){ // on the designs page
-                    if (window.innerWidth >= 1400) contentContainer.style.height = '2250px';
-                    // else if (window.innerWidth >= 1200) contentContainer.style.height = '2050px';
-                    else if (window.innerWidth >= 1000) contentContainer.style.height = '2250px';
-                    else if (window.innerWidth >= 800) contentContainer.style.height = '3700px';
-                    else if (window.innerWidth >= 600) contentContainer.style.height = '10600px';
-                    else if (window.innerWidth >= 400) contentContainer.style.height = '8000px';
-                    else if (window.innerWidth >= 200) contentContainer.style.height = '5800px';
-                    spot = 2;
-                }
-                else if(translateValue == "translate3d(-66.67%, 0px, 0)") { // on the videos page
-                    if (window.innerWidth >= 1000) contentContainer.style.height = '1000px';
-                    else if (window.innerWidth >= 800) contentContainer.style.height = '5500px';
-                    else if (window.innerWidth >= 600) contentContainer.style.height = '3000px';
-                    else if (window.innerWidth >= 400) contentContainer.style.height = '2500px';
-                    else contentContainer.style.height = '1000px';
-                    spot = 3;
-                }
-                else {
-                    contentContainer.style.height = '100%';
-                    spot = 1;
-                }
-                wrapper.style.transform = translateValue;
+                var img2 = document.createElement("img");
+                img2.src = 'images/sunset.jpg';
+                img2.alt = 'Sunset in Northbrook, IL';
+                section_div.appendChild(img2);
 
-                link.classList.add("active");
-            }
+                var img3 = document.createElement("img");
+                img3.src = 'images/croatia.JPG';
+                img3.alt = 'Hvar, Croatia';
+                section_div.appendChild(img3);
 
-            /*
-            // click on images
-            // Get the modal
-            var modal = document.getElementById("myModal");
+                var img4 = document.createElement("img");
+                img4.src = 'images/jump.PNG';
+                img4.alt = 'Kangaroo Island Dunes, Australia';
+                section_div.appendChild(img4);
 
-            // Get the image and insert it inside the modal - use its "alt" text as a caption
-            var img = $('.myImg');
-            console.log(img);
+                var img5 = document.createElement("img");
+                img5.src = 'images/nighttime_gallup_park.png';
+                img5.alt = 'Late Sunset over Gallup Park, Ann Arbor, MI';
+                section_div.appendChild(img5);
 
-            var modalImg = $("#img01");
+                var img6 = document.createElement("img");
+                img6.src = 'images/operahouse.JPG';
+                img6.alt = 'Sydney, Australia';
+                section_div.appendChild(img6);
 
-            console.log(modalImg);
-            var captionText = document.getElementById("caption");
-            console.log(captionText);
+                var img7 = document.createElement("img");
+                img7.src = 'images/mississippi.jpg';
+                img7.alt = 'A view of the sunset on the Mississippi River';
+                section_div.appendChild(img7);
 
-            // Get the image and insert it inside the modal - use its "alt" text as a caption
-            $('.myImg').click(function(){
-                modal.style.display = "block";
-                var newSrc = this.src;
-                modalImg.attr('src', newSrc);
-                captionText.innerHTML = this.alt;
-                var inner_element = document.getElementsByClassName("modal-content");
+                var img8 = document.createElement("img");
+                img8.src = 'images/octopus.JPG';
+                img8.alt = 'I liked this octopus graffiti, cannot remember where...';
+                section_div.appendChild(img8);
 
+                var img9 = document.createElement("img");
+                img9.src = 'images/hotel.jpg';
+                img9.alt = 'A hotel in Dubrovnik, Croatia';
+                section_div.appendChild(img9);
 
-                console.log(modalImg.height());
-                console.log(modalImg.width());
-                if (modalImg.height() > modalImg.width()){
+                var img10 = document.createElement("img");
+                img10.src = 'images/harrisville_sunset.png';
+                img10.alt = 'Pink skies in Harrisville, MI';
+                section_div.appendChild(img10);
 
-                }
+                var img11 = document.createElement("img");
+                img11.src = 'images/fire.JPG';
+                img11.alt = 'Somewhere up north at a campfire';
+                section_div.appendChild(img11);
+
+                var img12 = document.createElement("img");
+                img12.src = 'images/cabo_landscape.jpg';
+                img12.alt = 'Cabo San Lucas, Mexico';
+                section_div.appendChild(img12);
+
+                var img13 = document.createElement("img");
+                img13.src = 'images/graffiti.jpg';
+                img13.alt = 'Street Art in Melbourne, Australia';
+                section_div.appendChild(img13);
+
+                var img14 = document.createElement("img");
+                img14.src = 'images/trees.JPG';
+                img14.alt = 'In a forest, somewhere';
+                section_div.appendChild(img14);
+
+                var img15 = document.createElement("img");
+                img15.src = 'images/nice_restaurant.jpg';
+                img15.alt = 'Greenwood, a restaurant in Highwood, IL';
+                section_div.appendChild(img15);
+
+                var img16 = document.createElement("img");
+                img16.src = 'images/sail.jpg';
+                img16.alt = 'Cabo San Lucas, Mexico';
+                section_div.appendChild(img16);
+
+                var img17 = document.createElement("img");
+                img17.src = 'images/sleepysasha.JPG';
+                img17.alt = 'This is a picture of my sleepy old dog Sasha';
+                section_div.appendChild(img17);
+
+                var img18 = document.createElement("img");
+                img18.src = 'images/tellur.jpg';
+                img18.alt = 'Downtown Telluride, CO';
+                section_div.appendChild(img18);
+
+                var img19 = document.createElement("img");
+                img19.src = 'images/cliff.JPG';
+                img19.alt = 'The Blue Mountains, Australia';
+                section_div.appendChild(img19);
+
+                var img20 = document.createElement("img");
+                img20.src = 'images/crested-2.jpg';
+                img20.alt = 'A view of Crested Butte Mountain in Colorado';
+                section_div.appendChild(img20);
+
+                var img21 = document.createElement("img");
+                img21.src = 'images/apostles.JPG';
+                img21.alt = 'Twelve Apostles, Australia';
+                section_div.appendChild(img21);
+
+                var img22 = document.createElement("img");
+                img22.src = 'images/chandelier.jpg';
+                img22.alt = 'Kangaroo Island Dunes, Australia';
+                section_div.appendChild(img22);
+
+                var img23 = document.createElement("img");
+                img23.src = 'images/nighttime_gallup_park.png';
+                img23.alt = 'Chicago Cultural Center Ballroom';
+                section_div.appendChild(img23);
+
+                var img24 = document.createElement("img");
+                img24.src = 'images/soldierfield.JPG';
+                img24.alt = 'Soldier Field, Chicag';
+                section_div.appendChild(img24);
+
+                var img25 = document.createElement("img");
+                img25.src = 'images/umbrellas.jpg';
+                img25.alt = 'San Juan, Puerto Rico';
+                section_div.appendChild(img25);
+
+                var img26 = document.createElement("img");
+                img26.src = 'images/nationalmall.jpg';
+                img26.alt = 'Washington D.C.';
+                section_div.appendChild(img26);
+
+                var img27 = document.createElement("img");
+                img27.src = 'images/landmark_sky.png';
+                img27.alt = 'Landmark perspective';
+                section_div.appendChild(img27);
+
+                var img28 = document.createElement("img");
+                img28.src = 'images/AOPI.jpg';
+                img28.alt = 'Autumn leaves in Ann Arbor';
+                section_div.appendChild(img28);
+
+                var img29 = document.createElement("img");
+                img29.src = 'images/ranch.jpg';
+                img29.alt = 'Telluride, Colorado';
+                section_div.appendChild(img29);
+
+                var img30 = document.createElement("img");
+                img30.src = 'images/plane.jpg';
+                img30.alt = 'Chicago Skyline from above';
+                section_div.appendChild(img30);
+
+                var img31 = document.createElement("img");
+                img31.src = 'images/sasha.jpg';
+                img31.alt = 'Here is a picture of my dog being less sleepy';
+                section_div.appendChild(img31);
+
+                var img32 = document.createElement("img");
+                img32.src = 'images/golden.jpg';
+                img32.alt = 'Golden Hour in Colorado';
+                section_div.appendChild(img32);
+
+                var img34 = document.createElement("img");
+                img34.src = 'images/arb_thru_trees.png';
+                img34.alt = 'Walking down the trail in the arb';
+                section_div.appendChild(img34);
+
+                var img35 = document.createElement("img");
+                img35.src = 'images/diag_sunset.png';
+                img35.alt = 'A sunset in the diag';
+                section_div.appendChild(img35);
+
+                var img36 = document.createElement("img");
+                img36.src = 'images/skiing.jpg';
+                img36.alt = 'Skiing in Crested Butte, Colorado';
+                section_div.appendChild(img36);
+
+                var img37 = document.createElement("img");
+                img37.src = 'images/arb.JPG';
+                img37.alt = 'Views from the Ann Arbor Arboretum';
+                section_div.appendChild(img37);
+
+                var img38 = document.createElement("img");
+                img38.src = 'images/crabtree_sunset.jpg';
+                img38.alt = 'A sunset on the roof';
+                section_div.appendChild(img38);
+
+                var img39 = document.createElement("img");
+                img39.src = 'images/boston.jpg';
+                img39.alt = 'Views on the ocean in Marblehead, MA';
+                section_div.appendChild(img39);
+
+                var img40 = document.createElement("img");
+                img40.src = 'images/christmas.jpg';
+                img40.alt = 'Christmas in Melbourne, Australia';
+                section_div.appendChild(img40);
+
+                big_div.appendChild(section_div);
+                document.getElementById("contentContainer").appendChild(big_div);
             });
 
-            // Get the <span> element that closes the modal
-            var span = document.getElementsByClassName("close")[0];
+            // function for designs
+            document.getElementsByClassName("design_link")[0].addEventListener("click", function() {
+                // remove old div
+                if (document.getElementsByClassName("content").length == 1) {
+                    document.getElementsByClassName("content")[0].remove();
+                }
 
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function() {
-                modal.style.display = "none";
-            }
+                // start filling in content
+                var big_div = document.createElement('div');
+                big_div.id = 'itemTwo';                
+                big_div.className = 'content';
 
-            */
+                // handle the about div and append to big div
+                var about_div = document.createElement('div');
+                about_div.id = 'about';
+                var p_ele = document.createElement('p');
+                p_ele.innerHTML = "Here are some designs I have created using Adobe Photoshop:";
+                about_div.appendChild(p_ele);
+                big_div.appendChild(about_div);
 
+                // handle the section div called "photos"
+                var section_div = document.createElement('section');
+                section_div.id = 'photos';
+
+                var img1 = document.createElement("img");
+                img1.src = 'images/eclectic.png';
+                section_div.appendChild(img1);
+
+                var img2 = document.createElement("img");
+                img2.src = 'images/eden_cover_art.png';
+                section_div.appendChild(img2);
+
+                var img3 = document.createElement("img");
+                img3.src = 'images/memco.png';
+                section_div.appendChild(img3);
+
+                var img4 = document.createElement("img");
+                img4.src = 'images/birds-in-trees.jpg';
+                section_div.appendChild(img4);
+
+                var img5 = document.createElement("img");
+                img5.src = 'images/lo-fire.jpg';
+                section_div.appendChild(img5);
+
+                var img6 = document.createElement("img");
+                img6.src = 'images/2012_DANCE_PARTY_no_text.png';
+                section_div.appendChild(img6);
+
+                var img7 = document.createElement("img");
+                img7.src = 'images/stay.png';
+                section_div.appendChild(img7);
+
+                var img8 = document.createElement("img");
+                img8.src = 'images/planeGanggg.png';
+                section_div.appendChild(img8);
+
+                var img9 = document.createElement("img");
+                img9.src = 'images/desertwater.jpg';
+                section_div.appendChild(img9);
+
+                var img10 = document.createElement("img");
+                img10.src = 'images/final_kendrick_bowl.png';
+                section_div.appendChild(img10);
+
+                var img11 = document.createElement("img");
+                img11.src = 'images/lofi_mix_art.png';
+                section_div.appendChild(img11);
+
+                var img12 = document.createElement("img");
+                img12.src = 'images/living-liberty.png';
+                section_div.appendChild(img12);
+
+                var img13 = document.createElement("img");
+                img10.src = 'images/canada_goosebumps.jpg';
+                section_div.appendChild(img10);
+
+                var img14 = document.createElement("img");
+                img11.src = 'images/whip.png';
+                section_div.appendChild(img11);
+
+                var img15 = document.createElement("img");
+                img12.src = 'images/thePoet.png';
+                section_div.appendChild(img12);
+
+                big_div.appendChild(section_div);
+                document.getElementById("contentContainer").appendChild(big_div);
+            });
+
+            // videos function
+            document.getElementsByClassName("video_link")[0].addEventListener("click", function() {
+                // remove old div
+                if (document.getElementsByClassName("content").length == 1) {
+                    document.getElementsByClassName("content")[0].remove();
+                }
+
+                // start filling in content
+                var big_div = document.createElement('div');
+                big_div.id = 'itemThree';                
+                big_div.className = 'content';
+
+                // handle the about div and append to big div
+                var about_div = document.createElement('div');
+                about_div.id = 'about';
+                var p_ele = document.createElement('p');
+                p_ele.innerHTML = "Here are a few of my favorite videos I have taken:";
+                about_div.appendChild(p_ele);
+                big_div.appendChild(about_div);
+
+                // handle the div (id) called "videos"
+                var videos_div = document.createElement('div');
+                videos_div.id = 'videos';
+
+                // video 1
+                var video1 = document.createElement('div');
+                video1.id = 'video1';
+                var iframe1 = document.createElement('iframe');
+                iframe1.src = 'https://www.youtube.com/embed/MKLb36SiI34?start=5';
+                video1.appendChild(iframe1);
+                videos_div.appendChild(video1);
+
+                // video 2
+                var video2 = document.createElement('div');
+                video2.id = 'video2';
+                var iframe2 = document.createElement('iframe');
+                iframe2.src = 'https://www.youtube.com/embed/s8m0wPNwbtk';
+                video2.appendChild(iframe2);
+                videos_div.appendChild(video2);
+
+                // video 3
+                var video3 = document.createElement('div');
+                video3.id = 'video3';
+                var iframe3 = document.createElement('iframe');
+                iframe3.src = 'https://www.youtube.com/embed/Usp4kAVxw3A?';
+                video3.appendChild(iframe3);
+                videos_div.appendChild(video3);
+
+                // video 4
+                var video4 = document.createElement('div');
+                video4.id = 'video4';
+                var iframe4 = document.createElement('iframe');
+                iframe4.src = 'https://www.youtube.com/embed/OuaDIQIDM70?';
+                video4.appendChild(iframe4);
+                videos_div.appendChild(video4);
+
+                big_div.appendChild(videos_div);
+                document.getElementById("contentContainer").appendChild(big_div);
+            });
         </script>
     </body>
 </html>
