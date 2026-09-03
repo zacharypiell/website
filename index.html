@@ -58,6 +58,48 @@
         color: rgb(28 25 23);
       }
 
+      .yt-facade {
+        position: relative;
+        cursor: pointer;
+        background: #0c0a09;
+        padding: 0;
+        border: 0;
+        display: block;
+        width: 100%;
+      }
+      .yt-facade img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .yt-facade .yt-play {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0,0,0,0.25);
+        transition: background 0.2s ease;
+      }
+      .yt-facade:hover .yt-play,
+      .yt-facade:focus-visible .yt-play {
+        background: rgba(0,0,0,0.35);
+      }
+      .yt-facade .yt-play svg {
+        width: 68px;
+        height: 48px;
+        filter: drop-shadow(0 2px 8px rgba(0,0,0,0.35));
+      }
+      .yt-facade iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+
       .hero-bg {
         background-image: linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.55)), url('assets/images/iceland_waterfall_fav.jpeg');
         background-size: cover;
@@ -309,10 +351,6 @@
                     <iframe title="Eden" width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay; encrypted-media" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F862208176&color=%23a8a29e&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"></iframe>
                     <a href="https://soundcloud.com/zeliacpresents/eden-1" target="_blank" class="block px-4 py-2 text-sm text-stone-400 hover:text-white transition-colors">Eden - Open on SoundCloud</a>
                 </div>
-                <div class="rounded-xl overflow-hidden bg-stone-800/50 border border-stone-700/50">
-                    <iframe title="ain't no mountain high enough (ZELIAC Mix)" width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay; encrypted-media" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F1479790495&color=%23a8a29e&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"></iframe>
-                    <a href="https://soundcloud.com/zeliacpresents/aint-no-mountain-high-enough-zeliac-mix-1" target="_blank" class="block px-4 py-2 text-sm text-stone-400 hover:text-white transition-colors">ain't no mountain high enough (ZELIAC Mix) - Open on SoundCloud</a>
-                </div>
             </div>
             <h3 class="text-center text-stone-400 mb-8 fade-in">Here's what I'm listening to</h3>
             <div class="max-w-md mx-auto fade-in">
@@ -384,32 +422,40 @@
                     <img src="assets/images/birds-in-trees.jpg" alt="Birds in trees" class="w-full rounded-lg" loading="lazy">
                     <img src="assets/images/lo-fire.jpg" alt="Lo-fire" class="w-full rounded-lg" loading="lazy">
                     <img src="assets/images/2012_DANCE_PARTY_no_text.png" alt="Dance party design" class="w-full rounded-lg" loading="lazy">
-                    <img src="assets/images/stay.png" alt="Stay design" class="w-full rounded-lg" loading="lazy">
                     <img src="assets/images/planeGanggg.png" alt="Plane design" class="w-full rounded-lg" loading="lazy">
                     <img src="assets/images/desertwater.jpg" alt="Desert water" class="w-full rounded-lg" loading="lazy">
-                    <img src="assets/images/final_kendrick_bowl.png" alt="Kendrick bowl design" class="w-full rounded-lg" loading="lazy">
                     <img src="assets/images/lofi_mix_art.png" alt="Lo-fi mix art" class="w-full rounded-lg" loading="lazy">
                     <img src="assets/images/living-liberty.png" alt="Living liberty" class="w-full rounded-lg" loading="lazy">
-                    <img src="assets/images/whip.png" alt="Whip design" class="w-full rounded-lg" loading="lazy">
-                    <img src="assets/images/thePoet.png" alt="The Poet" class="w-full rounded-lg" loading="lazy">
                 </div>
             </div>
 
             <!-- Videos -->
             <div id="tab-videos" class="tab-content hidden">
                 <div class="grid md:grid-cols-2 gap-6">
-                    <div class="aspect-video rounded-xl overflow-hidden shadow-sm">
-                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/MKLb36SiI34?start=5" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="aspect-video rounded-xl overflow-hidden shadow-sm">
-                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/s8m0wPNwbtk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="aspect-video rounded-xl overflow-hidden shadow-sm">
-                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/Usp4kAVxw3A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="aspect-video rounded-xl overflow-hidden shadow-sm">
-                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/OuaDIQIDM70" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
+                    <button type="button" class="yt-facade aspect-video rounded-xl overflow-hidden shadow-sm" data-youtube-id="GdflxZdqDQM" aria-label="Play Kababish Summer">
+                        <img src="https://i.ytimg.com/vi/GdflxZdqDQM/maxresdefault.jpg" alt="Kababish Summer" loading="lazy" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/GdflxZdqDQM/hqdefault.jpg'">
+                        <span class="yt-play" aria-hidden="true">
+                            <svg viewBox="0 0 68 48"><path d="M66.52 7.74a8 8 0 0 0-5.64-5.66C56.45 1 34 1 34 1S11.55 1 7.12 2.08A8 8 0 0 0 1.48 7.74C.4 12.18.4 24 .4 24s0 11.82 1.08 16.26a8 8 0 0 0 5.64 5.66C11.55 47 34 47 34 47s22.45 0 26.88-1.08a8 8 0 0 0 5.64-5.66C67.6 35.82 67.6 24 67.6 24s0-11.82-1.08-16.26z" fill="red"/><path d="M45 24 27.5 14v20z" fill="#fff"/></svg>
+                        </span>
+                    </button>
+                    <button type="button" class="yt-facade aspect-video rounded-xl overflow-hidden shadow-sm" data-youtube-id="plhI86hSmvc" aria-label="Play Our 9-Month Journey Out West">
+                        <img src="https://i.ytimg.com/vi/plhI86hSmvc/maxresdefault.jpg" alt="Our 9-Month Journey Out West" loading="lazy" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/plhI86hSmvc/hqdefault.jpg'">
+                        <span class="yt-play" aria-hidden="true">
+                            <svg viewBox="0 0 68 48"><path d="M66.52 7.74a8 8 0 0 0-5.64-5.66C56.45 1 34 1 34 1S11.55 1 7.12 2.08A8 8 0 0 0 1.48 7.74C.4 12.18.4 24 .4 24s0 11.82 1.08 16.26a8 8 0 0 0 5.64 5.66C11.55 47 34 47 34 47s22.45 0 26.88-1.08a8 8 0 0 0 5.64-5.66C67.6 35.82 67.6 24 67.6 24s0-11.82-1.08-16.26z" fill="red"/><path d="M45 24 27.5 14v20z" fill="#fff"/></svg>
+                        </span>
+                    </button>
+                    <button type="button" class="yt-facade aspect-video rounded-xl overflow-hidden shadow-sm" data-youtube-id="MKLb36SiI34" data-youtube-params="start=5" aria-label="Play Time Lapse of Sydney Opera House at Sunset">
+                        <img src="https://i.ytimg.com/vi/MKLb36SiI34/maxresdefault.jpg" alt="Time Lapse of Sydney Opera House at Sunset" loading="lazy" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/MKLb36SiI34/hqdefault.jpg'">
+                        <span class="yt-play" aria-hidden="true">
+                            <svg viewBox="0 0 68 48"><path d="M66.52 7.74a8 8 0 0 0-5.64-5.66C56.45 1 34 1 34 1S11.55 1 7.12 2.08A8 8 0 0 0 1.48 7.74C.4 12.18.4 24 .4 24s0 11.82 1.08 16.26a8 8 0 0 0 5.64 5.66C11.55 47 34 47 34 47s22.45 0 26.88-1.08a8 8 0 0 0 5.64-5.66C67.6 35.82 67.6 24 67.6 24s0-11.82-1.08-16.26z" fill="red"/><path d="M45 24 27.5 14v20z" fill="#fff"/></svg>
+                        </span>
+                    </button>
+                    <button type="button" class="yt-facade aspect-video rounded-xl overflow-hidden shadow-sm" data-youtube-id="s8m0wPNwbtk" aria-label="Play Dubai Fountain Show outside the Burj Khalifa">
+                        <img src="https://i.ytimg.com/vi/s8m0wPNwbtk/hqdefault.jpg" alt="Dubai Fountain Show outside the Burj Khalifa" loading="lazy">
+                        <span class="yt-play" aria-hidden="true">
+                            <svg viewBox="0 0 68 48"><path d="M66.52 7.74a8 8 0 0 0-5.64-5.66C56.45 1 34 1 34 1S11.55 1 7.12 2.08A8 8 0 0 0 1.48 7.74C.4 12.18.4 24 .4 24s0 11.82 1.08 16.26a8 8 0 0 0 5.64 5.66C11.55 47 34 47 34 47s22.45 0 26.88-1.08a8 8 0 0 0 5.64-5.66C67.6 35.82 67.6 24 67.6 24s0-11.82-1.08-16.26z" fill="red"/><path d="M45 24 27.5 14v20z" fill="#fff"/></svg>
+                        </span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -452,6 +498,24 @@
                 btn.classList.add('active');
                 document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
                 document.getElementById('tab-' + btn.dataset.tab).classList.remove('hidden');
+            });
+        });
+
+        // High-res YouTube previews (click to load embed)
+        document.querySelectorAll('.yt-facade').forEach(facade => {
+            facade.addEventListener('click', () => {
+                const id = facade.dataset.youtubeId;
+                const extra = facade.dataset.youtubeParams ? `&${facade.dataset.youtubeParams}` : '';
+                const wrapper = document.createElement('div');
+                wrapper.className = 'aspect-video rounded-xl overflow-hidden shadow-sm relative bg-stone-900';
+                const iframe = document.createElement('iframe');
+                iframe.className = 'absolute inset-0 w-full h-full';
+                iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1${extra}`;
+                iframe.title = facade.getAttribute('aria-label') || 'YouTube video';
+                iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+                iframe.setAttribute('allowfullscreen', '');
+                wrapper.appendChild(iframe);
+                facade.replaceWith(wrapper);
             });
         });
 
