@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Zachary Piell - Personal Website">
+    <meta name="author" content="Zachary Piell">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Zachary Piell</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'system-ui', 'sans-serif'],
+              serif: ['Playfair Display', 'Georgia', 'serif'],
+            },
+            colors: {
+              stone: {
+                950: '#0c0a09',
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      .photo-grid { columns: 3; column-gap: 1rem; }
+      .photo-grid img { margin-bottom: 1rem; break-inside: avoid; }
+      @media (max-width: 1024px) { .photo-grid { columns: 2; } }
+      @media (max-width: 640px) { .photo-grid { columns: 1; } }
+
+      .nav-link { position: relative; }
+      .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: -2px; left: 0;
+        width: 0; height: 1px;
+        background: currentColor;
+        transition: width 0.3s ease;
+      }
+      .nav-link:hover::after { width: 100%; }
+
+      .fade-in {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+      }
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .visuals-tab.active {
+        background-color: rgb(245 245 244);
+        color: rgb(28 25 23);
+      }
+
+      .hero-bg {
+        background-image: linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.55)), url('assets/images/iceland_waterfall_fav.jpeg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+      }
+      @media (max-width: 768px) {
+        .hero-bg { background-attachment: scroll; }
+      }
+    </style>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-170086524-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-170086524-1');
+    </script>
+</head>
+
+<body class="bg-stone-50 text-stone-800 font-sans antialiased">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-300 bg-white/80 backdrop-blur-md border-b border-stone-200/60">
+        <div class="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
+            <a href="#hero" class="font-serif text-xl font-semibold tracking-tight text-stone-900">Zachary Piell</a>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium tracking-wide uppercase text-stone-500">
+                <a href="#about" class="nav-link hover:text-stone-900 transition-colors">About</a>
+                <a href="#experience" class="nav-link hover:text-stone-900 transition-colors">Experience</a>
+                <a href="#skills" class="nav-link hover:text-stone-900 transition-colors">Skills</a>
+                <a href="#music" class="nav-link hover:text-stone-900 transition-colors">Music</a>
+                <a href="#visuals" class="nav-link hover:text-stone-900 transition-colors">Visuals</a>
+                <a href="#contact" class="nav-link hover:text-stone-900 transition-colors">Contact</a>
+            </div>
+            <button id="menu-toggle" class="md:hidden p-2 text-stone-700" aria-label="Toggle menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path id="menu-icon-path" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden border-t border-stone-200/60 bg-white/95 backdrop-blur-md">
+            <div class="flex flex-col px-6 py-4 gap-3 text-sm font-medium tracking-wide uppercase text-stone-500">
+                <a href="#about" class="mobile-link py-1 hover:text-stone-900 transition-colors">About</a>
+                <a href="#experience" class="mobile-link py-1 hover:text-stone-900 transition-colors">Experience</a>
+                <a href="#skills" class="mobile-link py-1 hover:text-stone-900 transition-colors">Skills</a>
+                <a href="#music" class="mobile-link py-1 hover:text-stone-900 transition-colors">Music</a>
+                <a href="#visuals" class="mobile-link py-1 hover:text-stone-900 transition-colors">Visuals</a>
+                <a href="#contact" class="mobile-link py-1 hover:text-stone-900 transition-colors">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section id="hero" class="hero-bg min-h-screen flex items-center justify-center text-center text-white px-6">
+        <div class="max-w-2xl">
+            <div class="mb-8">
+                <img src="assets/images/piell.jpg" alt="Zachary Piell" class="w-40 h-40 md:w-52 md:h-52 rounded-full border-4 border-white/30 mx-auto object-cover shadow-2xl">
+            </div>
+            <h1 class="font-serif text-5xl md:text-7xl font-bold mb-4 tracking-tight">Zachary Piell</h1>
+            <p class="text-lg md:text-xl text-white/80 font-light leading-relaxed max-w-lg mx-auto">Consultant &middot; Musician &middot; Photographer</p>
+            <a href="#about" class="inline-block mt-10 text-sm uppercase tracking-widest text-white/60 hover:text-white transition-colors">
+                <span>Scroll Down</span>
+                <svg class="w-5 h-5 mx-auto mt-2 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7"/></svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="py-24 md:py-32 px-6">
+        <div class="max-w-3xl mx-auto fade-in">
+            <h2 class="font-serif text-3xl md:text-4xl font-semibold mb-10 text-center">About Me</h2>
+            <div class="space-y-5 text-center md:text-left">
+                <p class="text-lg leading-relaxed text-stone-600">I've always lived at the intersection of structure and creativity. By day, I'm a Chicago-based technology consultant, currently completing my One-Year MBA at Northwestern's Kellogg School of Management.</p>
+                <p class="text-lg leading-relaxed text-stone-600">Off the clock, that same energy shifts to sound and visual art. I've played piano and guitar for over a decade, producing and releasing 20+ tracks along the way. Behind the lens, I focus on drone photography, chasing clean geometry, aerial perspectives, and dramatic landscapes.</p>
+                <p class="text-lg leading-relaxed text-stone-600">Whether I'm architecting a system, building a melody, or framing a shot from four hundred feet up, the drive is identical: creating something compelling from the ground up.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="py-24 md:py-32 px-6 bg-stone-100/50">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="font-serif text-3xl md:text-4xl font-semibold mb-16 text-center fade-in">Experience</h2>
+            <div class="space-y-10">
+
+                <!-- Deloitte (featured) -->
+                <div class="fade-in bg-white rounded-2xl shadow-sm border border-stone-200/60 overflow-hidden">
+                    <div class="md:flex">
+                        <div class="md:w-1/4 bg-black flex items-center justify-center p-8 md:p-10">
+                            <img src="assets/images/logos/deloitte.png" alt="Deloitte" class="max-w-[200px] w-full">
+                        </div>
+                        <div class="md:w-3/4 p-8 md:p-10">
+                            <div class="flex flex-wrap items-baseline justify-between gap-2 mb-2">
+                                <h3 class="text-2xl font-semibold">Analyst --&gt; Consultant</h3>
+                                <p class="text-sm text-stone-400 uppercase tracking-wide">Sep 2021 - Jun 2026</p>
+                            </div>
+                            <p class="text-stone-500 mb-6">Deloitte &middot; Chicago, IL</p>
+                            <div class="space-y-6 text-stone-600 leading-relaxed">
+                                <div>
+                                    <h4 class="font-semibold text-stone-800 mb-2">Design Lead &amp; SME, Agentforce Implementation</h4>
+                                    <ul class="list-disc pl-5 space-y-1.5 text-[15px]">
+                                        <li>Helped pioneer one of Deloitte's earliest Agentforce implementations, designing conversational AI assistants and helping establish a repeatable firm capability.</li>
+                                        <li>Designed and deployed AI agents that made it faster for sales teams to create opportunities and manage relationships.</li>
+                                        <li>Drove adoption by demoing the solution to senior leaders across the firm and securing buy-in for future expansion.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-stone-800 mb-2">Sales Management Design Lead, Deloitte CRM ("Jupiter")</h4>
+                                    <ul class="list-disc pl-5 space-y-1.5 text-[15px]">
+                                        <li>Selected as Sales Management Design Lead (acting Manager) on Deloitte's global CRM implementation, mentoring teammates and owning sales and pipeline tracking design end to end.</li>
+                                        <li>Led key capability rollouts and UX redesigns that improved how sales teams track pipeline, relationships, and credit.</li>
+                                        <li>Ran a monthly design council of senior leaders across geographies to align strategy and shape major platform enhancements.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-stone-800 mb-2">Firm Initiatives</h4>
+                                    <ul class="list-disc pl-5 space-y-1.5 text-[15px]">
+                                        <li>Led communications and financial reporting for Deloitte's U.S. Salesforce Alliance, surfacing insights that helped drive alliance sales.</li>
+                                        <li>Organized large-scale city events for Chicago Deloitte consultants, managing a team and budget to strengthen connections across levels.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- University of Michigan -->
+                <div class="fade-in bg-white rounded-2xl shadow-sm border border-stone-200/60 overflow-hidden">
+                    <div class="md:flex">
+                        <div class="md:w-1/4 bg-[#00274C] flex items-center justify-center p-8 md:p-10">
+                            <img src="assets/images/logos/michigan.png" alt="University of Michigan" class="max-w-[140px] w-full">
+                        </div>
+                        <div class="md:w-3/4 p-8 md:p-10">
+                            <div class="flex flex-wrap items-baseline justify-between gap-2 mb-2">
+                                <h3 class="text-2xl font-semibold">University of Michigan</h3>
+                                <p class="text-sm text-stone-400 uppercase tracking-wide">Sep 2017 - May 2021</p>
+                            </div>
+                            <p class="text-stone-500 mb-4">B.S.E. Computer Science &middot; Minor in Music &middot; Magna Cum Laude</p>
+                            <p class="text-stone-600 leading-relaxed mb-8">Four years of debugging code by day, producing music at night, and making lifelong friends. Sprinkle in a couple of summer internships and a global pandemic, and you've got my college experience in a nutshell.</p>
+
+                            <h4 class="text-sm font-semibold uppercase tracking-wider text-stone-400 mb-4">Internships</h4>
+                            <div class="space-y-4">
+                                <div class="flex gap-4 items-start p-4 rounded-xl bg-stone-50 border border-stone-100">
+                                    <img src="assets/images/swoosh.png" alt="Nike" class="w-10 h-10 object-contain shrink-0 mt-0.5">
+                                    <div>
+                                        <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                                            <h5 class="font-semibold text-stone-800">Global Technology Intern</h5>
+                                            <span class="text-sm text-stone-400">Nike &middot; Summer 2020</span>
+                                        </div>
+                                        <p class="text-sm text-stone-600 mt-1 leading-relaxed">Product development team on FlexPLM; built dashboards with Splunk, New Relic, and Dynatrace, and designed a Nike Membership prototype for the Nike Combine project.</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4 items-start p-4 rounded-xl bg-stone-50 border border-stone-100">
+                                    <img src="assets/images/cboe.png" alt="Cboe" class="w-10 h-10 object-contain shrink-0 mt-0.5">
+                                    <div>
+                                        <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                                            <h5 class="font-semibold text-stone-800">Information Solutions Intern</h5>
+                                            <span class="text-sm text-stone-400">Cboe Global Markets &middot; Summer 2019</span>
+                                        </div>
+                                        <p class="text-sm text-stone-600 mt-1 leading-relaxed">Supported LiveVol analytics; repaired earnings data with MySQL, assessed API data in Python, and evaluated AI vendor partnerships.</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4 items-start p-4 rounded-xl bg-stone-50 border border-stone-100">
+                                    <img src="assets/images/logos/cme.png" alt="CME Group" class="w-10 h-10 object-contain shrink-0 mt-0.5 rounded-md">
+                                    <div>
+                                        <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                                            <h5 class="font-semibold text-stone-800">Business Analyst Intern</h5>
+                                            <span class="text-sm text-stone-400">CME Group &middot; Summer 2018</span>
+                                        </div>
+                                        <p class="text-sm text-stone-600 mt-1 leading-relaxed">Worked on the Alfabet platform to organize applications and data flows; maintained SQL databases and applied HTML/CSS.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="py-24 md:py-32 px-6">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="font-serif text-3xl md:text-4xl font-semibold mb-4 text-center fade-in">Skills</h2>
+            <p class="text-center text-stone-500 mb-16 fade-in">Tools I use across consulting, music, and visual work</p>
+            <div class="grid grid-cols-3 gap-4 sm:gap-6 fade-in">
+                <a href="https://www.salesforce.com" target="_blank" class="group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-xl bg-white shadow-sm border border-stone-200/60 hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                    <img src="assets/images/logos/salesforce.png" alt="Salesforce" class="w-12 h-12 sm:w-14 sm:h-14 object-contain">
+                    <span class="text-xs sm:text-sm font-medium text-stone-500 group-hover:text-stone-800 transition-colors text-center">Salesforce</span>
+                </a>
+                <a href="https://www.ableton.com" target="_blank" class="group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-xl bg-white shadow-sm border border-stone-200/60 hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                    <img src="assets/images/logos/ableton.jpg" alt="Ableton Live" class="w-12 h-12 sm:w-14 sm:h-14 object-contain">
+                    <span class="text-xs sm:text-sm font-medium text-stone-500 group-hover:text-stone-800 transition-colors text-center">Ableton Live</span>
+                </a>
+                <a href="https://www.apple.com/final-cut-pro/" target="_blank" class="group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-xl bg-white shadow-sm border border-stone-200/60 hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                    <img src="assets/images/logos/finalcut.png" alt="Final Cut Pro" class="w-12 h-12 sm:w-14 sm:h-14 object-contain rounded-xl">
+                    <span class="text-xs sm:text-sm font-medium text-stone-500 group-hover:text-stone-800 transition-colors text-center">Final Cut Pro</span>
+                </a>
+                <a href="https://en.wikipedia.org/wiki/SQL" target="_blank" class="group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-xl bg-white shadow-sm border border-stone-200/60 hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                    <img src="assets/images/logos/sql.png" alt="SQL" class="w-12 h-12 sm:w-14 sm:h-14 object-contain">
+                    <span class="text-xs sm:text-sm font-medium text-stone-500 group-hover:text-stone-800 transition-colors text-center">SQL</span>
+                </a>
+                <a href="https://www.adobe.com/products/photoshop.html" target="_blank" class="group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-xl bg-white shadow-sm border border-stone-200/60 hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                    <img src="assets/images/logos/photoshop.png" alt="Adobe Photoshop" class="w-12 h-12 sm:w-14 sm:h-14 object-contain rounded-xl">
+                    <span class="text-xs sm:text-sm font-medium text-stone-500 group-hover:text-stone-800 transition-colors text-center">Adobe Photoshop</span>
+                </a>
+                <a href="https://www.microsoft.com/microsoft-365" target="_blank" class="group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-xl bg-white shadow-sm border border-stone-200/60 hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                    <img src="assets/images/logos/microsoft.png" alt="Microsoft Suite" class="w-12 h-12 sm:w-14 sm:h-14 object-contain">
+                    <span class="text-xs sm:text-sm font-medium text-stone-500 group-hover:text-stone-800 transition-colors text-center">Microsoft Suite</span>
+                </a>
+                <a href="https://www.python.org" target="_blank" class="group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-xl bg-white shadow-sm border border-stone-200/60 hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                    <img src="assets/images/python.png" alt="Python" class="w-12 h-12 sm:w-14 sm:h-14 object-contain">
+                    <span class="text-xs sm:text-sm font-medium text-stone-500 group-hover:text-stone-800 transition-colors text-center">Python</span>
+                </a>
+                <a href="https://en.wikipedia.org/wiki/Regulation_of_UAVs_in_the_United_States" target="_blank" class="group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-xl bg-white shadow-sm border border-stone-200/60 hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                    <img src="assets/images/logos/drone.png" alt="Commercial Drone License" class="w-12 h-12 sm:w-14 sm:h-14 object-contain">
+                    <span class="text-xs sm:text-sm font-medium text-stone-500 group-hover:text-stone-800 transition-colors text-center">Commercial Drone License</span>
+                </a>
+                <a href="https://en.wikipedia.org/wiki/Prompt_engineering" target="_blank" class="group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-xl bg-white shadow-sm border border-stone-200/60 hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                    <img src="assets/images/logos/prompt.svg" alt="Prompt Engineering" class="w-12 h-12 sm:w-14 sm:h-14 object-contain rounded-xl">
+                    <span class="text-xs sm:text-sm font-medium text-stone-500 group-hover:text-stone-800 transition-colors text-center">Prompt Engineering</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Music -->
+    <section id="music" class="py-24 md:py-32 px-6 bg-stone-900 text-white">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="font-serif text-3xl md:text-4xl font-semibold mb-6 text-center fade-in">Music</h2>
+            <p class="text-center text-stone-400 max-w-xl mx-auto mb-16 fade-in">Since college, music production has been one of my favorite hobbies. I particularly enjoy making future bass-style electronic music. Here are some of my favorite tracks I've released.</p>
+            <div class="space-y-6 mb-16 fade-in">
+                <div class="rounded-xl overflow-hidden bg-stone-800/50 border border-stone-700/50">
+                    <iframe title="Wait x 3" width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay; encrypted-media" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F1238804113&color=%23a8a29e&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"></iframe>
+                    <a href="https://soundcloud.com/zeliacpresents/wait-x-3" target="_blank" class="block px-4 py-2 text-sm text-stone-400 hover:text-white transition-colors">Wait x 3 - Open on SoundCloud</a>
+                </div>
+                <div class="rounded-xl overflow-hidden bg-stone-800/50 border border-stone-700/50">
+                    <iframe title="So High - ZELIAC Remix" width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay; encrypted-media" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F979310176&color=%23a8a29e&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"></iframe>
+                    <a href="https://soundcloud.com/zeliacpresents/so-high-zeliac-remix" target="_blank" class="block px-4 py-2 text-sm text-stone-400 hover:text-white transition-colors">So High (ZELIAC Remix) - Open on SoundCloud</a>
+                </div>
+                <div class="rounded-xl overflow-hidden bg-stone-800/50 border border-stone-700/50">
+                    <iframe title="keep it on the low low" width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay; encrypted-media" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F1534759912&color=%23a8a29e&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"></iframe>
+                    <a href="https://soundcloud.com/zeliacpresents/keep-it-on-the-low-low" target="_blank" class="block px-4 py-2 text-sm text-stone-400 hover:text-white transition-colors">keep it on the low low - Open on SoundCloud</a>
+                </div>
+                <div class="rounded-xl overflow-hidden bg-stone-800/50 border border-stone-700/50">
+                    <iframe title="Eden" width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay; encrypted-media" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F862208176&color=%23a8a29e&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"></iframe>
+                    <a href="https://soundcloud.com/zeliacpresents/eden-1" target="_blank" class="block px-4 py-2 text-sm text-stone-400 hover:text-white transition-colors">Eden - Open on SoundCloud</a>
+                </div>
+                <div class="rounded-xl overflow-hidden bg-stone-800/50 border border-stone-700/50">
+                    <iframe title="ain't no mountain high enough (ZELIAC Mix)" width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay; encrypted-media" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F1479790495&color=%23a8a29e&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"></iframe>
+                    <a href="https://soundcloud.com/zeliacpresents/aint-no-mountain-high-enough-zeliac-mix-1" target="_blank" class="block px-4 py-2 text-sm text-stone-400 hover:text-white transition-colors">ain't no mountain high enough (ZELIAC Mix) - Open on SoundCloud</a>
+                </div>
+            </div>
+            <h3 class="text-center text-stone-400 mb-8 fade-in">Here's what I'm listening to</h3>
+            <div class="max-w-md mx-auto fade-in">
+                <div class="rounded-xl overflow-hidden">
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5rFLmbuBkNEnDq5Suea2oF?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visuals -->
+    <section id="visuals" class="py-24 md:py-32 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="font-serif text-3xl md:text-4xl font-semibold mb-6 text-center fade-in">Visuals</h2>
+            <div class="flex justify-center gap-2 mb-12 fade-in">
+                <button class="visuals-tab active px-5 py-2 text-sm font-medium rounded-full border border-stone-300 text-stone-500 hover:bg-stone-100 transition-all" data-tab="photos">Photos</button>
+                <button class="visuals-tab px-5 py-2 text-sm font-medium rounded-full border border-stone-300 text-stone-500 hover:bg-stone-100 transition-all" data-tab="designs">Designs</button>
+                <button class="visuals-tab px-5 py-2 text-sm font-medium rounded-full border border-stone-300 text-stone-500 hover:bg-stone-100 transition-all" data-tab="videos">Videos</button>
+            </div>
+
+            <!-- Photos -->
+            <div id="tab-photos" class="tab-content">
+                <div class="photo-grid">
+                    <img src="assets/images/photos/IMG_2103.jpg" alt="Rainbow over a city street after rain" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/photos/IMG_5585.jpg" alt="Westerkerk tower in Amsterdam" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/photos/IMG_5144.jpg" alt="Aerial view of clouds at sunset" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/photos/IMG_7289.jpg" alt="Gnarled tree trunk overlooking a lake" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/photos/IMG_7886.jpg" alt="Disco ball lighting a crowded venue" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/photos/IMG_8507.jpg" alt="Wax palms in a misty mountain valley" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/photos/IMG_8791.jpg" alt="Building covered in tropical greenery" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/photos/IMG_8796.jpg" alt="Sunbeams through clouds from above" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/photos/IMG_0815.jpg" alt="Coastal town at the base of a mountain" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/photos/IMG_0927.jpg" alt="King Protea flower against a blue sky" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/photos/IMG_1624.jpg" alt="White Temple and its reflection in Chiang Rai" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/photos/IMG_1676.jpg" alt="Blue guardian statue in Chiang Rai" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/iceland_waterfall_fav.jpeg" alt="Iceland waterfall" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/pinnacle.jpg" alt="Pinnacle Peak, Scottsdale, AZ" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/sunset.jpg" alt="Sunset in Northbrook, IL" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/angels_landing.jpeg" alt="Angels Landing, Zion" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/cabo_landscape.jpg" alt="Cabo San Lucas" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/nighttime_gallup_park.png" alt="Gallup Park, Ann Arbor" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/san_juan_sunset.jpeg" alt="Puget Sound sunset" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/mississippi.jpg" alt="Mississippi River sunset" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/black_sand_dunes.jpeg" alt="Black sand dunes, Iceland" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/puffin.jpeg" alt="Puffin, Iceland" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/chihuly.jpeg" alt="Chihuly Museum, Seattle" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/tellur.jpg" alt="Telluride, CO" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/umbrellas.jpg" alt="San Juan, Puerto Rico" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/crabtree_sunset.jpg" alt="Sunset on the roof" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/boston.jpg" alt="Marblehead, MA" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/idaho_hike.jpeg" alt="Sawtooth Mountains, Idaho" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/arb_thru_trees.png" alt="Ann Arbor Arboretum" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/christmas.jpg" alt="Melbourne, Australia" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/plane.jpg" alt="Chicago skyline from above" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/zion_skies.jpeg" alt="Zion National Park" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/sandiegotree.jpeg" alt="San Diego" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/neon_trees_2.jpeg" alt="Chicago Botanical Gardens" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/america_arb.jpeg" alt="Ann Arbor sunset" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/golden.jpg" alt="Golden hour, Colorado" class="w-full rounded-lg" loading="lazy">
+                </div>
+            </div>
+
+            <!-- Designs -->
+            <div id="tab-designs" class="tab-content hidden">
+                <div class="photo-grid">
+                    <img src="assets/images/eclectic.png" alt="Eclectic design" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/eden_cover_art.png" alt="Eden cover art" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/memco.png" alt="Memco design" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/birds-in-trees.jpg" alt="Birds in trees" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/lo-fire.jpg" alt="Lo-fire" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/2012_DANCE_PARTY_no_text.png" alt="Dance party design" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/stay.png" alt="Stay design" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/planeGanggg.png" alt="Plane design" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/desertwater.jpg" alt="Desert water" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/final_kendrick_bowl.png" alt="Kendrick bowl design" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/lofi_mix_art.png" alt="Lo-fi mix art" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/living-liberty.png" alt="Living liberty" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/whip.png" alt="Whip design" class="w-full rounded-lg" loading="lazy">
+                    <img src="assets/images/thePoet.png" alt="The Poet" class="w-full rounded-lg" loading="lazy">
+                </div>
+            </div>
+
+            <!-- Videos -->
+            <div id="tab-videos" class="tab-content hidden">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="aspect-video rounded-xl overflow-hidden shadow-sm">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/MKLb36SiI34?start=5" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="aspect-video rounded-xl overflow-hidden shadow-sm">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/s8m0wPNwbtk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="aspect-video rounded-xl overflow-hidden shadow-sm">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/Usp4kAVxw3A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="aspect-video rounded-xl overflow-hidden shadow-sm">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/OuaDIQIDM70" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Footer -->
+    <footer id="contact" class="py-16 px-6 bg-stone-900 text-stone-400 text-center">
+        <div class="max-w-xl mx-auto">
+            <h2 class="font-serif text-2xl md:text-3xl font-semibold text-white mb-6">Get in Touch</h2>
+            <div class="flex justify-center gap-6 mb-8">
+                <a href="https://www.linkedin.com/in/zachary-piell-1635b2164/" target="_blank" class="hover:text-white transition-colors" aria-label="LinkedIn">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+                <a href="mailto:zacharypiell@gmail.com" class="hover:text-white transition-colors" aria-label="Email">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                </a>
+                <a href="https://soundcloud.com/zeliacpresents" target="_blank" class="hover:text-white transition-colors" aria-label="SoundCloud">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M1.175 12.225c-.051 0-.094.046-.101.1l-.233 2.154.233 2.105c.007.058.05.098.101.098.05 0 .09-.04.099-.098l.255-2.105-.27-2.154c-.009-.057-.049-.1-.084-.1zm-.899.828c-.06 0-.091.037-.104.094L0 14.479l.172 1.282c.013.06.045.094.104.094.057 0 .09-.038.099-.094l.2-1.282-.2-1.332c-.009-.06-.042-.094-.099-.094zm1.8-.585c-.065 0-.111.05-.119.109l-.217 2.105.217 2.07c.008.063.054.109.119.109.063 0 .109-.046.117-.109l.244-2.07-.244-2.105c-.008-.063-.054-.109-.117-.109zm.9-.276c-.074 0-.128.058-.135.125l-.2 2.381.2 2.264c.007.07.061.125.135.125.07 0 .126-.055.131-.125l.226-2.264-.226-2.381c-.005-.067-.061-.125-.131-.125zm.899-.06c-.081 0-.141.064-.15.141l-.182 2.441.182 2.347c.009.08.069.141.15.141.08 0 .14-.061.148-.141l.205-2.347-.205-2.441c-.008-.077-.068-.141-.148-.141zm.9.066c-.089 0-.155.071-.162.156l-.164 2.375.164 2.373c.007.087.073.156.162.156.087 0 .155-.069.16-.156l.186-2.373-.186-2.375c-.005-.085-.073-.156-.16-.156zm.901-.184c-.098 0-.171.079-.176.172l-.148 2.559.148 2.43c.005.096.078.172.176.172.096 0 .17-.076.174-.172l.168-2.43-.168-2.559c-.004-.093-.078-.172-.174-.172zm.9.072c-.104 0-.184.085-.189.188l-.133 2.487.133 2.469c.005.102.085.188.189.188.103 0 .183-.086.188-.188l.148-2.469-.148-2.487c-.005-.103-.085-.188-.188-.188zm2.705-1.388c-.118 0-.212.098-.215.213l-.116 3.59.116 2.456c.003.118.097.213.215.213.116 0 .211-.095.214-.213l.131-2.456-.131-3.59c-.003-.115-.098-.213-.214-.213zm-.9.458c-.111 0-.2.091-.205.203l-.124 3.132.124 2.467c.005.115.094.203.205.203.11 0 .199-.088.203-.203l.14-2.467-.14-3.132c-.004-.112-.093-.203-.203-.203zm1.799-1.16c-.124 0-.221.104-.225.226l-.107 4.292.107 2.449c.004.125.101.226.225.226.123 0 .22-.101.224-.226l.119-2.449-.119-4.292c-.004-.122-.101-.226-.224-.226zm.901-.23c-.131 0-.235.11-.238.238l-.097 4.522.097 2.437c.003.13.107.238.238.238.13 0 .233-.108.236-.238l.109-2.437-.109-4.522c-.003-.128-.106-.238-.236-.238zm.9.07c-.138 0-.248.117-.25.25l-.087 4.452.087 2.418c.002.136.112.25.25.25.137 0 .248-.114.25-.25l.098-2.418-.098-4.452c-.002-.133-.113-.25-.25-.25zm.899-.2c-.145 0-.261.123-.263.263l-.077 4.652.077 2.403c.002.143.118.263.263.263.144 0 .26-.12.262-.263l.088-2.403-.088-4.652c-.002-.14-.118-.263-.262-.263zm3.52 1.803c-.27 0-.527.053-.762.148-.161-1.8-1.702-3.203-3.571-3.203-.477 0-.937.098-1.355.275-.156.066-.198.133-.2.264v8.688c.002.136.107.249.245.262h5.643c1.497 0 2.714-1.209 2.714-2.7s-1.217-2.734-2.714-2.734z"/></svg>
+                </a>
+            </div>
+            <p class="text-sm text-stone-500">&copy; 2026 Zachary Piell. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        // Visuals tabs
+        document.querySelectorAll('.visuals-tab').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.visuals-tab').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
+                document.getElementById('tab-' + btn.dataset.tab).classList.remove('hidden');
+            });
+        });
+
+        // Scroll fade-in
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        // Ensure above-the-fold content is visible even if observer is delayed
+        requestAnimationFrame(() => {
+            document.querySelectorAll('.fade-in').forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    el.classList.add('visible');
+                }
+            });
+        });
+
+        // Active nav highlighting
+        const sections = document.querySelectorAll('section[id], footer[id]');
+        const navLinks = document.querySelectorAll('nav a[href^="#"]');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                if (window.scrollY >= section.offsetTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('text-stone-900');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('text-stone-900');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
