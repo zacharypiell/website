@@ -130,6 +130,92 @@
         .lightbox-btn { width: 2.25rem; height: 2.25rem; }
       }
 
+      .ep-keyboard {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+      .ep-key {
+        width: 4.5rem;
+        height: 7rem;
+        border-radius: 0.75rem;
+        border: 1px solid rgba(255,255,255,0.12);
+        background: linear-gradient(180deg, #3f3f46 0%, #27272a 100%);
+        color: #e7e5e4;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 0.35rem;
+        padding: 0.85rem 0.4rem;
+        cursor: pointer;
+        user-select: none;
+        touch-action: manipulation;
+        transition: background 0.12s ease, transform 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+      }
+      .ep-key:hover {
+        border-color: rgba(255,255,255,0.28);
+      }
+      .ep-key.active {
+        background: linear-gradient(180deg, #57534e 0%, #44403c 100%);
+        border-color: rgba(255,255,255,0.45);
+        transform: translateY(2px);
+        box-shadow: inset 0 2px 8px rgba(0,0,0,0.35);
+      }
+      .ep-key .ep-chord {
+        font-size: 0.95rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+      }
+      .ep-key .ep-label {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: rgba(231,229,228,0.55);
+      }
+      .ep-gap {
+        width: 1.25rem;
+      }
+      .ep-controls {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+      }
+      .ep-controls label {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.8rem;
+        color: rgb(168 162 158);
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+      .ep-controls select {
+        appearance: none;
+        background: #27272a url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23a8a29e' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 0.65rem center;
+        color: #e7e5e4;
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 0.5rem;
+        padding: 0.45rem 2rem 0.45rem 0.75rem;
+        font-size: 0.875rem;
+        letter-spacing: 0;
+        text-transform: none;
+        cursor: pointer;
+      }
+      .ep-controls select:focus {
+        outline: none;
+        border-color: rgba(255,255,255,0.35);
+      }
+      @media (max-width: 640px) {
+        .ep-key { width: 3.35rem; height: 5.75rem; padding: 0.65rem 0.25rem; }
+        .ep-key .ep-chord { font-size: 0.8rem; }
+        .ep-gap { width: 100%; height: 0; }
+      }
+
       .nav-link { position: relative; }
       .nav-link::after {
         content: '';
@@ -443,6 +529,70 @@
                     <a href="https://soundcloud.com/zeliacpresents/eden-1" target="_blank" class="block px-4 py-2 text-sm text-stone-400 hover:text-white transition-colors">Eden - Open on SoundCloud</a>
                 </div>
             </div>
+            <div class="fade-in mb-16">
+                <p class="text-center text-stone-400 max-w-xl mx-auto mb-8">Try out my electric piano using the keys shown below. Feel free to change the key, as well as the major/minor configuration</p>
+                <div class="ep-controls">
+                    <label>
+                        Key
+                        <select id="ep-root" aria-label="Select key">
+                            <option value="0">C</option>
+                            <option value="1">C# / Db</option>
+                            <option value="2" selected>D</option>
+                            <option value="3">Eb</option>
+                            <option value="4">E</option>
+                            <option value="5">F</option>
+                            <option value="6">F# / Gb</option>
+                            <option value="7">G</option>
+                            <option value="8">Ab</option>
+                            <option value="9">A</option>
+                            <option value="10">Bb</option>
+                            <option value="11">B</option>
+                        </select>
+                    </label>
+                    <label>
+                        Mode
+                        <select id="ep-mode" aria-label="Select major or minor">
+                            <option value="major" selected>Major</option>
+                            <option value="minor">Minor</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="ep-keyboard" id="ep-keyboard" aria-label="Electric piano chords">
+                    <button type="button" class="ep-key" data-key="a" data-degree="0">
+                        <span class="ep-chord">Dmaj7</span>
+                        <span class="ep-label">A</span>
+                    </button>
+                    <button type="button" class="ep-key" data-key="s" data-degree="1">
+                        <span class="ep-chord">Em7</span>
+                        <span class="ep-label">S</span>
+                    </button>
+                    <button type="button" class="ep-key" data-key="d" data-degree="2">
+                        <span class="ep-chord">F#m7</span>
+                        <span class="ep-label">D</span>
+                    </button>
+                    <button type="button" class="ep-key" data-key="f" data-degree="3">
+                        <span class="ep-chord">Gmaj7</span>
+                        <span class="ep-label">F</span>
+                    </button>
+                    <span class="ep-gap" aria-hidden="true"></span>
+                    <button type="button" class="ep-key" data-key="j" data-degree="4">
+                        <span class="ep-chord">A7</span>
+                        <span class="ep-label">J</span>
+                    </button>
+                    <button type="button" class="ep-key" data-key="k" data-degree="5">
+                        <span class="ep-chord">Bm7</span>
+                        <span class="ep-label">K</span>
+                    </button>
+                    <button type="button" class="ep-key" data-key="l" data-degree="6">
+                        <span class="ep-chord">C#ø7</span>
+                        <span class="ep-label">L</span>
+                    </button>
+                    <button type="button" class="ep-key" data-key=";" data-degree="7">
+                        <span class="ep-chord">Dmaj9</span>
+                        <span class="ep-label">;</span>
+                    </button>
+                </div>
+            </div>
             <h3 class="text-center text-stone-400 mb-8 fade-in">Here's what I'm listening to</h3>
             <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-6 fade-in">
                 <div class="rounded-xl overflow-hidden">
@@ -669,6 +819,232 @@
             if (e.key === 'Escape') closeLightbox();
             if (e.key === 'ArrowLeft') showLightboxImage(lightboxIndex - 1);
             if (e.key === 'ArrowRight') showLightboxImage(lightboxIndex + 1);
+        });
+
+        // Electric piano (A S D F / J K L ;) — key & major/minor selectable
+        const EP_KEYS = ['a', 's', 'd', 'f', 'j', 'k', 'l', ';'];
+        const EP_NOTE_SHARP = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+        const EP_NOTE_FLAT = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'];
+        const EP_FLAT_ROOTS = new Set([1, 3, 5, 8, 10]); // prefer flats for Db Eb F Ab Bb contexts; also when selected as flat option
+        const EP_MAJOR_DEGREES = [0, 2, 4, 5, 7, 9, 11];
+        const EP_MINOR_DEGREES = [0, 2, 3, 5, 7, 8, 10];
+        const EP_INTERVALS = {
+            maj7: [0, 4, 7, 11],
+            m7: [0, 3, 7, 10],
+            7: [0, 4, 7, 10],
+            'ø7': [0, 3, 6, 10],
+            maj9: [0, 4, 7, 11, 14],
+            m9: [0, 3, 7, 10, 14]
+        };
+        const EP_MAJOR_QUALS = ['maj7', 'm7', 'm7', 'maj7', '7', 'm7', 'ø7', 'maj9'];
+        const EP_MINOR_QUALS = ['m7', 'ø7', 'maj7', 'm7', 'm7', 'maj7', '7', 'm9'];
+
+        let epChords = {};
+        const epActive = new Map();
+        let epCtx = null;
+        let epMaster = null;
+        const epRootSelect = document.getElementById('ep-root');
+        const epModeSelect = document.getElementById('ep-mode');
+
+        function midiToFreq(midi) {
+            return 440 * Math.pow(2, (midi - 69) / 12);
+        }
+
+        function noteName(pc, preferFlat) {
+            return (preferFlat ? EP_NOTE_FLAT : EP_NOTE_SHARP)[((pc % 12) + 12) % 12];
+        }
+
+        function chordLabel(rootPc, quality, preferFlat) {
+            const root = noteName(rootPc, preferFlat);
+            if (quality === 'maj7') return root + 'maj7';
+            if (quality === 'maj9') return root + 'maj9';
+            if (quality === 'm7') return root + 'm7';
+            if (quality === 'm9') return root + 'm9';
+            if (quality === '7') return root + '7';
+            if (quality === 'ø7') return root + 'ø7';
+            return root + quality;
+        }
+
+        function buildEpChords(rootPc, mode) {
+            const degrees = mode === 'minor' ? EP_MINOR_DEGREES : EP_MAJOR_DEGREES;
+            const quals = mode === 'minor' ? EP_MINOR_QUALS : EP_MAJOR_QUALS;
+            const useFlat = EP_FLAT_ROOTS.has(rootPc);
+            const baseMidi = 48 + ((rootPc + 12) % 12);
+            const chords = {};
+            EP_KEYS.forEach((key, i) => {
+                const degree = i === 7 ? 0 : degrees[i];
+                const quality = quals[i];
+                const chordRootPc = (rootPc + degree) % 12;
+                let chordRootMidi = baseMidi + degree;
+                while (chordRootMidi < 47) chordRootMidi += 12;
+                while (chordRootMidi > 60) chordRootMidi -= 12;
+                chords[key] = {
+                    name: chordLabel(chordRootPc, quality, useFlat),
+                    midi: EP_INTERVALS[quality].map((iv) => chordRootMidi + iv)
+                };
+            });
+            return chords;
+        }
+
+        function refreshEpChords() {
+            Array.from(epActive.keys()).forEach(stopEpChord);
+            const rootPc = parseInt(epRootSelect.value, 10);
+            const mode = epModeSelect.value;
+            epChords = buildEpChords(rootPc, mode);
+            document.querySelectorAll('.ep-key').forEach((btn) => {
+                const chord = epChords[btn.dataset.key];
+                if (!chord) return;
+                const label = btn.querySelector('.ep-chord');
+                if (label) label.textContent = chord.name;
+                btn.setAttribute('aria-label', chord.name + ' chord');
+            });
+        }
+
+        function ensureEpAudio() {
+            if (!epCtx) {
+                epCtx = new (window.AudioContext || window.webkitAudioContext)();
+                epMaster = epCtx.createGain();
+                epMaster.gain.value = 0.22;
+                const filter = epCtx.createBiquadFilter();
+                filter.type = 'lowpass';
+                filter.frequency.value = 3200;
+                filter.Q.value = 0.7;
+                epMaster.connect(filter);
+                filter.connect(epCtx.destination);
+            }
+            if (epCtx.state === 'suspended') epCtx.resume();
+            return epCtx;
+        }
+
+        function createEpVoice(freq, startTime) {
+            const ctx = epCtx;
+            const output = ctx.createGain();
+            output.gain.value = 0;
+
+            const carrier = ctx.createOscillator();
+            const modulator = ctx.createOscillator();
+            const modGain = ctx.createGain();
+            const tone = ctx.createOscillator();
+            const toneGain = ctx.createGain();
+
+            carrier.type = 'sine';
+            modulator.type = 'sine';
+            tone.type = 'triangle';
+
+            carrier.frequency.value = freq;
+            modulator.frequency.value = freq;
+            tone.frequency.value = freq * 2;
+            toneGain.gain.value = 0.12;
+            modGain.gain.value = freq * 1.8;
+
+            modulator.connect(modGain);
+            modGain.connect(carrier.frequency);
+            carrier.connect(output);
+            tone.connect(toneGain);
+            toneGain.connect(output);
+
+            const attack = 0.015;
+            const decay = 0.35;
+            const sustain = 0.45;
+            output.gain.setValueAtTime(0, startTime);
+            output.gain.linearRampToValueAtTime(0.9, startTime + attack);
+            output.gain.exponentialRampToValueAtTime(Math.max(sustain, 0.001), startTime + attack + decay);
+
+            modulator.start(startTime);
+            carrier.start(startTime);
+            tone.start(startTime);
+
+            return { output, nodes: [carrier, modulator, tone, modGain, toneGain], startTime };
+        }
+
+        function startEpChord(key) {
+            const chord = epChords[key];
+            if (!chord || epActive.has(key)) return;
+            ensureEpAudio();
+            const start = epCtx.currentTime;
+            const voices = chord.midi.map((midi, i) => {
+                const voice = createEpVoice(midiToFreq(midi), start + i * 0.004);
+                voice.output.connect(epMaster);
+                return voice;
+            });
+            epActive.set(key, voices);
+            const btn = document.querySelector(`.ep-key[data-key="${CSS.escape(key)}"]`);
+            if (btn) btn.classList.add('active');
+        }
+
+        function stopEpChord(key) {
+            const voices = epActive.get(key);
+            if (!voices || !epCtx) return;
+            const now = epCtx.currentTime;
+            voices.forEach(({ output, nodes }) => {
+                try {
+                    output.gain.cancelScheduledValues(now);
+                    output.gain.setValueAtTime(Math.max(output.gain.value, 0.001), now);
+                    output.gain.exponentialRampToValueAtTime(0.001, now + 0.55);
+                } catch (_) {}
+                nodes.forEach((node) => {
+                    try {
+                        if (typeof node.stop === 'function') node.stop(now + 0.6);
+                    } catch (_) {}
+                });
+                setTimeout(() => {
+                    try { output.disconnect(); } catch (_) {}
+                }, 700);
+            });
+            epActive.delete(key);
+            const btn = document.querySelector(`.ep-key[data-key="${CSS.escape(key)}"]`);
+            if (btn) btn.classList.remove('active');
+        }
+
+        function normalizeEpKey(e) {
+            if (e.key === ';') return ';';
+            return e.key.toLowerCase();
+        }
+
+        function shouldIgnoreEpKeys(e) {
+            if (lightbox.classList.contains('open')) return true;
+            if (e.metaKey || e.ctrlKey || e.altKey) return true;
+            const tag = (e.target && e.target.tagName) || '';
+            return tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || e.target.isContentEditable;
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (shouldIgnoreEpKeys(e) || e.repeat) return;
+            const key = normalizeEpKey(e);
+            if (!epChords[key]) return;
+            e.preventDefault();
+            startEpChord(key);
+        });
+        document.addEventListener('keyup', (e) => {
+            const key = normalizeEpKey(e);
+            if (!epChords[key]) return;
+            stopEpChord(key);
+        });
+
+        document.querySelectorAll('.ep-key').forEach((btn) => {
+            const key = btn.dataset.key;
+            const press = (e) => {
+                e.preventDefault();
+                startEpChord(key);
+            };
+            const release = (e) => {
+                e.preventDefault();
+                stopEpChord(key);
+            };
+            btn.addEventListener('mousedown', press);
+            btn.addEventListener('mouseup', release);
+            btn.addEventListener('mouseleave', () => stopEpChord(key));
+            btn.addEventListener('touchstart', press, { passive: false });
+            btn.addEventListener('touchend', release);
+            btn.addEventListener('touchcancel', release);
+        });
+
+        epRootSelect.addEventListener('change', refreshEpChords);
+        epModeSelect.addEventListener('change', refreshEpChords);
+        refreshEpChords();
+
+        window.addEventListener('blur', () => {
+            Array.from(epActive.keys()).forEach(stopEpChord);
         });
 
         // Scroll fade-in
