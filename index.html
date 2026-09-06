@@ -210,6 +210,54 @@
         outline: none;
         border-color: rgba(255,255,255,0.35);
       }
+      .ep-controls input[type="range"] {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 7rem;
+        height: 0.35rem;
+        border-radius: 9999px;
+        background: rgba(255,255,255,0.18);
+        outline: none;
+        cursor: pointer;
+      }
+      .ep-controls input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 0.9rem;
+        height: 0.9rem;
+        border-radius: 9999px;
+        background: #e7e5e4;
+        border: 0;
+        cursor: pointer;
+      }
+      .ep-controls input[type="range"]::-moz-range-thumb {
+        width: 0.9rem;
+        height: 0.9rem;
+        border-radius: 9999px;
+        background: #e7e5e4;
+        border: 0;
+        cursor: pointer;
+      }
+      .ep-controls .ep-beat-btn {
+        appearance: none;
+        background: #27272a;
+        color: #e7e5e4;
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 0.5rem;
+        padding: 0.45rem 0.85rem;
+        font-size: 0.875rem;
+        letter-spacing: 0;
+        text-transform: none;
+        cursor: pointer;
+        transition: background 0.15s ease, border-color 0.15s ease;
+      }
+      .ep-controls .ep-beat-btn:hover {
+        border-color: rgba(255,255,255,0.28);
+      }
+      .ep-controls .ep-beat-btn.is-playing {
+        background: #44403c;
+        border-color: rgba(255,255,255,0.35);
+      }
       @media (max-width: 640px) {
         .ep-key { width: 3.35rem; height: 5.75rem; padding: 0.65rem 0.25rem; }
         .ep-key .ep-chord { font-size: 0.8rem; }
@@ -652,7 +700,7 @@
                 </div>
             </div>
             <div class="fade-in mb-16">
-                <p class="text-center text-stone-400 max-w-xl mx-auto mb-8">Try out my electric piano using the keys shown below. Feel free to change the key, as well as the major/minor configuration</p>
+                <p class="text-center text-stone-400 max-w-xl mx-auto mb-8">Try out my electric piano using the keys shown below. Feel free to change the key and the major/minor configuration, and be sure to add a backing drum track for maximum vibes.</p>
                 <div class="ep-controls">
                     <label>
                         Key
@@ -678,6 +726,22 @@
                             <option value="minor">Minor</option>
                         </select>
                     </label>
+                    <label>
+                        Volume
+                        <input type="range" id="ep-volume" min="0" max="100" value="55" aria-label="Piano key volume">
+                    </label>
+                    <label>
+                        Beat
+                        <select id="ep-beat" aria-label="Select drum beat style">
+                            <option value="off" selected>Paused</option>
+                            <option value="chill-vibes">Chill Vibes</option>
+                            <option value="house">House</option>
+                            <option value="trap">Trap</option>
+                            <option value="old-school">Old-School Rap</option>
+                            <option value="lofi">Lo-Fi</option>
+                        </select>
+                    </label>
+                    <button type="button" class="ep-beat-btn" id="ep-beat-toggle" aria-label="Pause drum beat" disabled>Pause</button>
                 </div>
                 <div class="ep-keyboard" id="ep-keyboard" aria-label="Electric piano chords">
                     <button type="button" class="ep-key" data-key="a" data-degree="0">
@@ -1010,8 +1074,21 @@
         const epActive = new Map();
         let epCtx = null;
         let epMaster = null;
+        let drumMaster = null;
         const epRootSelect = document.getElementById('ep-root');
         const epModeSelect = document.getElementById('ep-mode');
+        const epVolumeSlider = document.getElementById('ep-volume');
+        const epBeatSelect = document.getElementById('ep-beat');
+        const epBeatToggle = document.getElementById('ep-beat-toggle');
+
+        function pianoGainFromSlider() {
+            const pct = parseInt(epVolumeSlider.value, 10) / 100;
+            return pct * pct * 0.45;
+        }
+
+        function applyPianoVolume() {
+            if (epMaster) epMaster.gain.value = pianoGainFromSlider();
+        }
 
         function midiToFreq(midi) {
             return 440 * Math.pow(2, (midi - 69) / 12);
@@ -1071,13 +1148,17 @@
             if (!epCtx) {
                 epCtx = new (window.AudioContext || window.webkitAudioContext)();
                 epMaster = epCtx.createGain();
-                epMaster.gain.value = 0.22;
+                epMaster.gain.value = pianoGainFromSlider();
                 const filter = epCtx.createBiquadFilter();
                 filter.type = 'lowpass';
                 filter.frequency.value = 3200;
                 filter.Q.value = 0.7;
                 epMaster.connect(filter);
                 filter.connect(epCtx.destination);
+
+                drumMaster = epCtx.createGain();
+                drumMaster.gain.value = 0.32;
+                drumMaster.connect(epCtx.destination);
             }
             if (epCtx.state === 'suspended') epCtx.resume();
             return epCtx;
@@ -1208,7 +1289,256 @@
 
         epRootSelect.addEventListener('change', refreshEpChords);
         epModeSelect.addEventListener('change', refreshEpChords);
+        epVolumeSlider.addEventListener('input', applyPianoVolume);
         refreshEpChords();
+
+        // Drum beats (Web Audio synthesized)
+        // 16-step patterns: k=kick, s=snare, h=closed hat, o=open hat, c=clap
+        const DRUM_STYLES = {
+            'chill-vibes': {
+                bpm: 96,
+                swing: 0.1,
+                pattern: [
+                    ['k', 'h'], [], ['o'], ['h'],
+                    ['s'], ['h'], ['k'], [],
+                    ['h'], [], ['o', 'h'], [],
+                    ['s', 'h'], [], ['o'], ['h']
+                ]
+            },
+            house: {
+                bpm: 124,
+                swing: 0,
+                pattern: [
+                    ['k'], ['h'], ['o'], ['h'],
+                    ['k', 's'], ['h'], ['o'], ['h'],
+                    ['k'], ['h'], ['o'], ['h'],
+                    ['k', 's'], ['h'], ['o'], ['h']
+                ]
+            },
+            trap: {
+                bpm: 140,
+                swing: 0,
+                pattern: [
+                    ['k'], ['h'], ['h'], ['h'],
+                    ['h'], ['h'], ['s'], ['h'],
+                    ['k'], ['h'], ['h'], ['k'],
+                    ['h'], ['h'], ['s'], ['h', 'h']
+                ]
+            },
+            'old-school': {
+                bpm: 92,
+                swing: 0.14,
+                pattern: [
+                    ['k', 'h'], [], ['h'], ['k'],
+                    ['s', 'h'], [], ['h'], [],
+                    ['k', 'h'], ['k'], ['h'], [],
+                    ['s', 'h'], [], ['h'], ['h']
+                ]
+            },
+            lofi: {
+                bpm: 84,
+                swing: 0.2,
+                pattern: [
+                    ['k', 'h'], [], ['h'], [],
+                    ['s'], ['h'], [], ['h'],
+                    ['k'], [], ['h'], ['k'],
+                    ['s', 'h'], [], ['h'], []
+                ]
+            }
+        };
+
+        let drumStyle = 'off';
+        let drumPlaying = false;
+        let drumTimer = null;
+        let drumNextNoteTime = 0;
+        let drumStep = 0;
+        const DRUM_LOOKAHEAD = 0.08;
+        const DRUM_SCHEDULE_AHEAD = 0.2;
+
+        function noiseBuffer() {
+            const len = epCtx.sampleRate * 0.2;
+            const buffer = epCtx.createBuffer(1, len, epCtx.sampleRate);
+            const data = buffer.getChannelData(0);
+            for (let i = 0; i < len; i++) data[i] = Math.random() * 2 - 1;
+            return buffer;
+        }
+
+        let sharedNoise = null;
+        function getNoiseBuffer() {
+            if (!sharedNoise) sharedNoise = noiseBuffer();
+            return sharedNoise;
+        }
+
+        function playKick(time, soft = false) {
+            const osc = epCtx.createOscillator();
+            const gain = epCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(soft ? 120 : 150, time);
+            osc.frequency.exponentialRampToValueAtTime(42, time + 0.12);
+            gain.gain.setValueAtTime(soft ? 0.7 : 1, time);
+            gain.gain.exponentialRampToValueAtTime(0.001, time + (soft ? 0.28 : 0.35));
+            osc.connect(gain);
+            gain.connect(drumMaster);
+            osc.start(time);
+            osc.stop(time + 0.4);
+        }
+
+        function playSnare(time, soft = false) {
+            const noise = epCtx.createBufferSource();
+            noise.buffer = getNoiseBuffer();
+            const noiseFilter = epCtx.createBiquadFilter();
+            noiseFilter.type = 'highpass';
+            noiseFilter.frequency.value = soft ? 900 : 1200;
+            const noiseGain = epCtx.createGain();
+            noiseGain.gain.setValueAtTime(soft ? 0.35 : 0.55, time);
+            noiseGain.gain.exponentialRampToValueAtTime(0.001, time + (soft ? 0.18 : 0.22));
+            noise.connect(noiseFilter);
+            noiseFilter.connect(noiseGain);
+            noiseGain.connect(drumMaster);
+
+            const osc = epCtx.createOscillator();
+            const oscGain = epCtx.createGain();
+            osc.type = 'triangle';
+            osc.frequency.value = 180;
+            oscGain.gain.setValueAtTime(soft ? 0.25 : 0.4, time);
+            oscGain.gain.exponentialRampToValueAtTime(0.001, time + 0.12);
+            osc.connect(oscGain);
+            oscGain.connect(drumMaster);
+
+            noise.start(time);
+            noise.stop(time + 0.25);
+            osc.start(time);
+            osc.stop(time + 0.15);
+        }
+
+        function playHat(time, open = false) {
+            const noise = epCtx.createBufferSource();
+            noise.buffer = getNoiseBuffer();
+            const filter = epCtx.createBiquadFilter();
+            filter.type = 'highpass';
+            filter.frequency.value = open ? 6000 : 8000;
+            const gain = epCtx.createGain();
+            gain.gain.setValueAtTime(open ? 0.22 : 0.16, time);
+            gain.gain.exponentialRampToValueAtTime(0.001, time + (open ? 0.28 : 0.05));
+            noise.connect(filter);
+            filter.connect(gain);
+            gain.connect(drumMaster);
+            noise.start(time);
+            noise.stop(time + (open ? 0.3 : 0.06));
+        }
+
+        function playClap(time) {
+            const delays = [0, 0.012, 0.024];
+            delays.forEach((d, i) => {
+                const noise = epCtx.createBufferSource();
+                noise.buffer = getNoiseBuffer();
+                const filter = epCtx.createBiquadFilter();
+                filter.type = 'bandpass';
+                filter.frequency.value = 1400;
+                const gain = epCtx.createGain();
+                const t = time + d;
+                gain.gain.setValueAtTime(0.28 * (1 - i * 0.2), t);
+                gain.gain.exponentialRampToValueAtTime(0.001, t + 0.18);
+                noise.connect(filter);
+                filter.connect(gain);
+                gain.connect(drumMaster);
+                noise.start(t);
+                noise.stop(t + 0.2);
+            });
+        }
+
+        function triggerDrumHit(hit, time, styleKey) {
+            const soft = styleKey === 'lofi' || styleKey === 'chill-vibes';
+            if (hit === 'k') playKick(time, soft);
+            else if (hit === 's') playSnare(time, soft);
+            else if (hit === 'h') playHat(time, false);
+            else if (hit === 'o') playHat(time, true);
+            else if (hit === 'c') playClap(time);
+        }
+
+        function scheduleDrumNotes() {
+            if (!drumPlaying || !DRUM_STYLES[drumStyle]) return;
+            const style = DRUM_STYLES[drumStyle];
+            const secondsPerBeat = 60 / style.bpm;
+            const secondsPerStep = secondsPerBeat / 4; // 16th notes
+
+            while (drumNextNoteTime < epCtx.currentTime + DRUM_SCHEDULE_AHEAD) {
+                const step = drumStep % 16;
+                let when = drumNextNoteTime;
+                if (style.swing && step % 2 === 1) {
+                    when += secondsPerStep * style.swing;
+                }
+                const hits = style.pattern[step] || [];
+                // Trap-style hat rolls on denser steps
+                if (drumStyle === 'trap' && step === 15) {
+                    [0, 0.04, 0.08].forEach((off) => playHat(when + off, false));
+                } else {
+                    hits.forEach((hit) => triggerDrumHit(hit, when, drumStyle));
+                }
+                drumNextNoteTime += secondsPerStep;
+                drumStep += 1;
+            }
+        }
+
+        function drumSchedulerTick() {
+            scheduleDrumNotes();
+            drumTimer = window.setTimeout(drumSchedulerTick, DRUM_LOOKAHEAD * 1000);
+        }
+
+        function updateBeatToggleUi() {
+            const hasStyle = drumStyle !== 'off' && !!DRUM_STYLES[drumStyle];
+            epBeatToggle.disabled = !hasStyle;
+            epBeatToggle.textContent = drumPlaying ? 'Pause' : 'Play';
+            epBeatToggle.classList.toggle('is-playing', drumPlaying);
+            epBeatToggle.setAttribute('aria-label', drumPlaying ? 'Pause drum beat' : 'Play drum beat');
+        }
+
+        function stopDrumBeat() {
+            drumPlaying = false;
+            if (drumTimer) {
+                clearTimeout(drumTimer);
+                drumTimer = null;
+            }
+            updateBeatToggleUi();
+        }
+
+        function startDrumBeat() {
+            if (!DRUM_STYLES[drumStyle]) {
+                stopDrumBeat();
+                return;
+            }
+            ensureEpAudio();
+            sharedNoise = null;
+            drumPlaying = true;
+            drumStep = 0;
+            drumNextNoteTime = epCtx.currentTime + 0.05;
+            if (drumTimer) clearTimeout(drumTimer);
+            drumSchedulerTick();
+            updateBeatToggleUi();
+        }
+
+        function setDrumStyle(style) {
+            drumStyle = style;
+            if (style === 'off') {
+                epBeatSelect.value = 'off';
+                stopDrumBeat();
+                return;
+            }
+            epBeatSelect.value = style;
+            startDrumBeat();
+        }
+
+        epBeatSelect.addEventListener('change', () => {
+            setDrumStyle(epBeatSelect.value);
+        });
+
+        epBeatToggle.addEventListener('click', () => {
+            if (drumStyle === 'off') return;
+            if (drumPlaying) stopDrumBeat();
+            else startDrumBeat();
+        });
+
+        updateBeatToggleUi();
 
         window.addEventListener('blur', () => {
             Array.from(epActive.keys()).forEach(stopEpChord);
